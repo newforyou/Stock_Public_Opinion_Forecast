@@ -16,19 +16,19 @@
 
     <!-- Bootstrap core CSS -->
     <link
-      href="../static/vendor/bootstrap/css/bootstrap.min.css"
+      href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
       rel="stylesheet"
     />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../static/assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/fontawesome.css") }}" />
     <link
       rel="stylesheet"
-      href="../static/assets/css/templatemo-cyborg-gaming.css"
+      href="{{ url_for('static',filename="assets/css/templatemo-cyborg-gaming.css") }}"
     />
-    <link rel="stylesheet" href="../static/assets/css/owl.css" />
-    <link rel="stylesheet" href="../static/assets/css/animate.css" />
-    <link rel="stylesheet" href="../static/assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/owl.css") }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/animate.css") }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/swiper-bundle.min.css") }}" />
   </head>
 
   <style>
@@ -120,19 +120,6 @@
   </style>
 
   <body>
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
       <div class="container">
@@ -140,17 +127,17 @@
           <div class="col-12">
             <nav class="main-nav">
               <!-- ***** Logo Start ***** -->
-              <a href="index.html" class="logo">
-                <img src="../static/assets/images/logo.png" alt="" />
+              <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt="" />
               </a>
               <!-- ***** Logo End ***** -->
 
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
-                <li><a href="index.html">首页</a></li>
+                <li><a href="{{ url_for('index') }}">首页</a></li>
                 <li>
-                  <a href="profile.html" class="active"
-                    >我的订阅<img src="assets/images/profile-header.jpg" alt=""
+                  <a href="{{ url_for('profile') }}" class="active"
+                    >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}" alt=""
                   /></a>
                 </li>
               </ul>
@@ -176,7 +163,7 @@
                   <div class="row">
                     <div class="col-lg-4">
                       <img
-                        src="../static/assets/images/profile.jpg"
+                        src="{{ url_for('static',filename="assets/images/profile.jpg") }}"
                         id="userpicture"
                         alt=""
                         style="border-radius: 23px"
@@ -456,7 +443,7 @@
                   <ul>
                     <li>
                       <img
-                        src="../static/assets/images/game-01.jpg"
+                        src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
                         alt=""
                         class="templatemo-item"
                       />
@@ -479,7 +466,7 @@
                     </li>
                     <li>
                       <div class="main-border-button border-active">
-                        <a href="details.html">进入详情</a>
+                        <a href="{{ url_for('detail') }}">进入详情</a>
                       </div>
                     </li>
                   </ul>
@@ -494,14 +481,14 @@
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
-    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static',filename="vendor/jquery/jquery.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
 
-    <script src="../static/assets/js/isotope.min.js"></script>
-    <script src="../static/assets/js/owl-carousel.js"></script>
-    <script src="../static/assets/js/tabs.js"></script>
-    <script src="../static/assets/js/popup.js"></script>
-    <script src="../static/assets/js/custom.js"></script>
+    <script src="{{ url_for('static',filename="assets/js/isotope.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/owl-carousel.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
 
     <!-- 更换头像 -->
     <script>

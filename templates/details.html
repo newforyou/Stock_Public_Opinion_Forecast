@@ -1,193 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <script src="../static/assets/js/echarts.js"></script>
+    <script src="{{ url_for('static',filename="assets/js/echarts.js") }}"></script>
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
     />
 
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
+          rel="stylesheet"/>
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../static/assets/css/fontawesome.css" />
-    <link rel="stylesheet" href="../static/assets/css/templatemo-cyborg-gaming.css" />
-    <link rel="stylesheet" href="../static/assets/css/owl.css" />
-    <link rel="stylesheet" href="../static/assets/css/animate.css" />
-    <link rel="stylesheet" href="../static/assets/css/swiper-bundle.min.css" />
-    <!--
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/fontawesome.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/templatemo-cyborg-gaming.css") }}"/>
+    <link rel="stylesheet" href="{{url_for('static',filename="assets/css/owl.css")}}"/>
+    <link rel="stylesheet" href="{{url_for('static',filename="assets/css/animate.css")}}"/>
+    <link rel="stylesheet" href="{{url_for('static',filename="assets/css/swiper-bundle.min.css")}}"/>
 
-TemplateMo 579 Cyborg Gaming
+</head>
 
-
-
--->
-  </head>
-
-  <body>
-    <!-- ***** Preloader Start ***** -->
-<!--    <div id="js-preloader" class="js-preloader">-->
-<!--      <div class="preloader-inner">-->
-<!--        <span class="dot"></span>-->
-<!--        <div class="dots">-->
-<!--          <span></span>-->
-<!--          <span></span>-->
-<!--          <span></span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-    <!-- ***** Preloader End ***** -->
-
-    <!-- ***** 头部开始 ***** -->
-    <header class="header-area header-sticky">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="main-nav">
-              <!-- ***** Logo开始 ***** -->
-              <a href="index.html" class="logo">
-                <img src="../static/assets/images/logo.png" alt="" />
-              </a>
-              <!-- ***** Logo结束 ***** -->
-              <!-- ***** 搜索模块开始 ***** -->
-              <div class="search-input">
-                <form id="search" action="#">
-                  <input
-                    type="text"
-                    placeholder="请输入关键字"
-                    id="searchText"
-                    name="searchKeyword"
-                    onkeypress="handle"
-                  />
-                  <i class="fa fa-search"></i>
-                </form>
-              </div>
-              <!-- ***** 搜索模块结束 ***** -->
-              <!-- ***** 菜单栏开始 ***** -->
-              <ul class="nav">
-                <li><a href="index.html">首页</a></li>
-                <li>
-                  <a href="profile.html"
-                    >我的订阅<img src="assets/images/profile-header.jpg" alt=""
-                  /></a>
-                </li>
-              </ul>
-              <a class="menu-trigger">
-                <span>Menu</span>
-              </a>
-              <!-- ***** 菜单栏结束 ***** -->
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- ***** 头部结束 ***** -->
-
+<body>
+<!-- ***** 头部开始 ***** -->
+<header class="header-area header-sticky">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="page-content">
-            <!-- ***** Featured Start ***** -->
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="feature-banner header-text">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <img
-                        src="assets/images/feature-left.jpg"
-                        alt=""
-                        style="border-radius: 23px"
-                      />
-                    </div>
-                    <div class="col-lg-8">
-                      <div class="thumb">
-                        <!-- <img src="assets/images/feature-right.jpg" alt="" style="border-radius: 23px;">
-                      <a href="#" target="_blank"><i class="fa fa-play"></i></a> -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- ***** Featured End ***** -->
-
-            <!-- ***** 详细信息开始 ***** -->
-            <div class="game-details">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h2>股票详细信息</h2>
-                </div>
-                <div class="col-lg-12">
-                  <div class="content">
-                    <!-- 数据折线图开始 -->
-                    <div id="main" style="width: 1176px; height: 400px"></div>
-                    <!-- 数据折线图结束 -->
-                    <div class="col-lg-12">
-                      <div class="main-border-button">
-                        <a href="#">订阅</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- ***** Details End ***** -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="container">
         <div class="row">
-          <div class="col-lg-12">
-            <p></p>
-          </div>
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo开始 ***** -->
+                    <a href="{{ url_for('index') }}" class="logo">
+                        <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt=""/>
+                    </a>
+                    <!-- ***** Logo结束 ***** -->
+                    <!-- ***** 搜索模块开始 ***** -->
+                    <div class="search-input">
+                        <form id="search" action="#">
+                            <input
+                                    type="text"
+                                    placeholder="请输入关键字"
+                                    id="searchText"
+                                    name="searchKeyword"
+                                    onkeypress="handle"
+                            />
+                            <i class="fa fa-search"></i>
+                        </form>
+                    </div>
+                    <!-- ***** 搜索模块结束 ***** -->
+                    <!-- ***** 菜单栏开始 ***** -->
+                    <ul class="nav">
+                        <li><a href="{{ url_for('index') }}">首页</a></li>
+                        <li>
+                            <a href="{{ url_for('profile') }}"
+                            >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}" alt=""
+                            /></a>
+                        </li>
+                    </ul>
+                    <a class="menu-trigger">
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** 菜单栏结束 ***** -->
+                </nav>
+            </div>
         </div>
-      </div>
-    </footer>
+    </div>
+</header>
+<!-- ***** 头部结束 ***** -->
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content">
+                <!-- ***** 详细信息开始 ***** -->
+                <div class="game-details">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>股票详细信息</h2>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="content">
+                                <!-- 数据折线图开始 -->
+                                <div id="main" style="width: 1176px; height: 400px"></div>
+                                <!-- 数据折线图结束 -->
+                                <div class="col-lg-12">
+                                    <div class="main-border-button">
+                                        <a href="#">订阅</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***** 详细信息结束 ***** -->
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/tabs.js"></script>
-    <script src="assets/js/popup.js"></script>
-    <script src="assets/js/custom.js"></script>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <script type="text/javascript">
-      var myChart = echarts.init(document.getElementById("main"));
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="{{ url_for('static',filename="vendor/jquery/jquery.min.js") }}"></script>
+<script src="{{ url_for('static',filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
 
-      option = {
+<script src="{{ url_for('static',filename="assets/js/isotope.min.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/owl-carousel.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
+
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+
+    option = {
         xAxis: {
-          type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            type: "category",
+            data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         },
         yAxis: {
-          type: "value",
+            type: "value",
         },
         series: [
-          {
-            data: [150, 230, 224, 218, 135, 147, 260],
-            type: "line",
-          },
+            {
+                data: [150, 230, 224, 218, 135, 147, 260],
+                type: "line",
+            },
         ],
-      };
+    };
 
-      myChart.setOption(option);
-    </script>
-  </body>
+    myChart.setOption(option);
+</script>
+</body>
 </html>

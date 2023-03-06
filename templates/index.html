@@ -15,15 +15,16 @@
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
+          rel="stylesheet"/>
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../static/assets/css/fontawesome.css"/>
-    <link rel="stylesheet" href="../static/assets/css/templatemo-cyborg-gaming.css"/>
-    <link rel="stylesheet" href="../static/assets/css/owl.css"/>
-    <link rel="stylesheet" href="../static/assets/css/animate.css"/>
-    <link rel="stylesheet" href="../static/assets/css/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="../static/assets/css/my.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/fontawesome.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/templatemo-cyborg-gaming.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/owl.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/animate.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/swiper-bundle.min.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/my.css") }}">
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                 <nav class="main-nav">
                     <!-- ***** logo开始 ***** -->
                     <a href="{{ url_for('index') }}" class="logo">
-                        <img src="../static/assets/images/logo.png" alt=""/>
+                        <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt=""/>
                     </a>
                     <!-- ***** logo结束 ***** -->
 
@@ -59,7 +60,8 @@
                         <li><a href="{{ url_for('index') }}" class="active">首页</a></li>
                         <li>
                             <a href="{{ url_for('profile') }}"
-                            >我的订阅<img src="assets/images/profile-header.jpg" alt=""
+                            >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
+                                          alt=""
                             /></a>
                         </li>
                     </ul>
@@ -102,7 +104,7 @@
                             <ul>
                                 <li>
                                     <img
-                                            src="assets/images/game-01.jpg"
+                                            src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
                                             alt=""
                                             class="templatemo-item"
                                     />
@@ -136,7 +138,7 @@
                             <ul>
                                 <li>
                                     <img
-                                            src="assets/images/game-01.jpg"
+                                            src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
                                             alt=""
                                             class="templatemo-item"
                                     />
@@ -187,13 +189,13 @@
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static',filename="vendor/jquery/jquery.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
 
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/tabs.js"></script>
-    <script src="assets/js/popup.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="{{ url_for('static',filename="assets/js/isotope.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/owl-carousel.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
+    <script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
 </body>
 </html>
