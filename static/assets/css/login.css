@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-image: linear-gradient(120deg, #3498db, #8e44ad);
+  background-image: linear-gradient(to right, #1f2122, #1f2122);
   ;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,7 @@ body {
 
 h1 {
   font-weight: bold;
+  color: #fff;
   margin: 0;
 }
 
@@ -31,14 +32,14 @@ span {
 }
 
 a {
-  color: #333;
+  color: #fff;
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
 }
 
 .container {
-  background: #fff;
+  background: #27292a;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
   position: relative;
@@ -50,7 +51,7 @@ a {
 }
 
 .form-container form {
-  background: #fff;
+  background: #27292a;
   display: flex;
   flex-direction: column;
   padding: 0 50px;
@@ -113,7 +114,7 @@ a {
   top: 100%;
   width: 0%;
   height: 2px;
-  background-image: linear-gradient(120deg, #3498db, #8e44ad);
+  background-image: linear-gradient(120deg, #ed608f, #1f2122);
   transition: .5s;
 }
 
@@ -160,7 +161,7 @@ button.ghost {
 }
 
 .form-container button {
-  background: linear-gradient(120deg, #3498db, #8e44ad);
+  background: linear-gradient(120deg, #e35d8a, #a358bc);
   border: none;
   background-size: 200%;
   color: #fff;
@@ -205,7 +206,7 @@ button.ghost {
 }
 
 .overlay {
-  background-image: linear-gradient(120deg, #3498db, #8e44ad);
+  background-image: linear-gradient(120deg, #7453d8, #ed608f);
   color: #fff;
   position: relative;
   left: -100%;
