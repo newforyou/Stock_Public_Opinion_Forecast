@@ -1,8 +1,28 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask,request,render_template,redirect,url_for
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
+from flask_migrate import Migrate
+from exts import db
+from models import UserModel,StockModel,SubscriptionModel,NewsModel
+import config
+import warnings
+warnings.filterwarnings("ignore",category=DeprecationWarning)
 
-app = Flask(__name__)
+app=Flask(__name__)
+# 绑定配置文件
+app.config.from_object(config)
 
+db.init_app(app)
+
+migrate=Migrate(app,db)
+
+#测试数据库连接,验证是否连接成功
+# @app.route('/')
+# def hello():
+#     engine=db.get_engine()
+#     conn=engine.connect()
+#     conn.close()
+#     return "hello world!"
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -26,4 +46,4 @@ def detail():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
