@@ -8,6 +8,8 @@ from exts import db
 登陆密码
 昵称
 头像
+年龄
+个性签名
 """
 class UserModel(db.Model):
     __tablename__="user"
@@ -17,6 +19,9 @@ class UserModel(db.Model):
     userMail=db.Column(db.String(30),nullable=False)
     nickname=db.Column(db.String(20),default='请自定义昵称')
     profilePhoto=db.Column(db.String(256),default='./static/assets/images/popular-01.jpg')
+    age=db.Column(db.String(5))
+    signature=db.Column(db.String(50))
+
 """
 股票信息表，字段为：
 股票id（主键）
