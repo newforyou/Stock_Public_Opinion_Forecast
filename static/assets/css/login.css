@@ -88,7 +88,7 @@ a {
 
 .txtb input {
   font-size: 15px;
-  color: #333;
+  color: #ffffff;
   border: none;
   width: 100%;
   outline: none;
@@ -128,8 +128,8 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background: #ff4b2b;
+  border: 1px solid #ffffff;
+  background: transparent;
   color: #fff;
   font-size: 12px;
   font-weight: bold;

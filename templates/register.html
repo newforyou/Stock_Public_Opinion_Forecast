@@ -14,37 +14,44 @@
 <div class="container" id="login-box">
     <div class="form-container sign-in-container">
         <form method="post">
-            <h1>登录</h1>
+            <h1>注册</h1>
             <div class="txtb">
-                <input type="email"/>
+                <input type="text" name="username"/>
+                <span data-placeholder="用户名"></span>
+            </div>
+            <div class="txtb">
+                <input type="email" name="email"/>
                 <span data-placeholder="邮箱"></span>
             </div>
             <div class="txtb">
-                <input type="password"/>
+                <input type="password" name="password"/>
                 <span data-placeholder="密码"></span>
             </div>
-            <a href="#">忘记密码？</a>
-            <button>登录</button>
+            <div class="txtb">
+                <input type="password" name="password_confirm"/>
+                <span data-placeholder="确认密码"></span>
+            </div>
+            <button type="submit">注册</button>
         </form>
     </div>
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
-                <h1>没有账号?</h1>
-                <p>立即注册加入我们，和我们一起开始旅程吧</p>
-                <button href="">注册</button>
+                <h1>已有账号？</h1>
+                <p>请使用您的账号进行登录</p>
+                <button href="">登录</button>
             </div>
         </div>
     </div>
 </div>
 </body>
-  <script>
+<script>
     $(".txtb input").on("focus", function () {
-      $(this).addClass("focus");
+        $(this).addClass("focus");
     });
 
     $(".txtb input").on("blur", function () {
-      if ($(this).val() == "") $(this).removeClass("focus");
+        if ($(this).val() == "") $(this).removeClass("focus");
     });
-  </script>
+</script>
 </html>
