@@ -37,7 +37,7 @@ def hello():
 
 
 
-
+#hook
 @app.before_request
 def my_before_request():
     userId = session.get("userId")

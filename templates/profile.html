@@ -16,19 +16,19 @@
 
     <!-- Bootstrap core CSS -->
     <link
-            href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
+            href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}"
             rel="stylesheet"
     />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/fontawesome.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/fontawesome.css') }}"/>
     <link
             rel="stylesheet"
-            href="{{ url_for('static',filename="assets/css/templatemo-cyborg-gaming.css") }}"
+            href="{{ url_for('static',filename='assets/css/templatemo-cyborg-gaming.css') }}"
     />
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/owl.css") }}"/>
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/animate.css") }}"/>
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/swiper-bundle.min.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/owl.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/swiper-bundle.min.css') }}"/>
 </head>
 
 <style>
@@ -52,6 +52,7 @@
         border: 1px solid #e75e8d;
     }
 
+    
     /* 模态框样式 */
     /* 模态框背景 */
     .modal {
@@ -130,7 +131,7 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="{{ url_for('personal.index') }}" class="logo">
-                        <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt=""/>
+                        <img src="{{ url_for('static',filename='assets/images/logo.png') }}" alt=""/>
                     </a>
                     <!-- ***** Logo End ***** -->
 
@@ -139,7 +140,7 @@
                         <li><a href="{{ url_for('personal.index') }}">首页</a></li>
                         <li>
                             <a href="{{ url_for('personal.profile') }}" class="active"
-                            >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
+                            >我的订阅<img src="{{ url_for('static',filename='assets/images/profile-header.jpg') }}"
                                           alt=""
                             /></a>
                         </li>
@@ -166,7 +167,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <img
-                                            src="{{ url_for('static',filename="assets/images/profile.jpg") }}"
+                                            src="{{ url_for('static',filename='assets/images/profile.jpg') }}"
                                             id="userpicture"
                                             alt=""
                                             style="border-radius: 23px"
@@ -188,9 +189,9 @@
                                 <div class="col-lg-4 align-self-center">
                                     <div class="main-info header-text">
                                         <span>简介</span>
-                                        {% if user %}
-                                            <p>昵称：{{ user.nickname }}</p>
-                                            <p>年龄：{{ user.age }}</p>
+                                            <p>昵称：{{ g.user.nickname }}</p>
+                                            <p>年龄：{{ g.user.age }}</p>
+                                            <p>邮箱：{{g.user.userMail}}</p>
                                             <div style="height: 85px; width: 340px">
                                                 <p
                                                         style="
@@ -200,25 +201,9 @@
                               word-wrap: break-word;
                             "
                                                 >
-                                                    个性签名：{{ user.signature }}
+                                                    个性签名：{{ g.user.signature }}
                                                 </p>
                                             </div>
-                                        {% else %}
-                                            <p>昵称：</p>
-                                            <p>年龄：</p>
-                                            <div style="height: 85px; width: 340px">
-                                                <p
-                                                        style="
-                              width: 100%;
-                              height: 100%;
-                              word-break: break-all;
-                              word-wrap: break-word;
-                            "
-                                                >
-                                                    个性签名：
-                                                </p>
-                                            </div>
-                                        {% endif %}
                                         <!-- 修改信息模态框 -->
                                         <div id="myModal" class="modal">
                                             <!-- 模态框内容 -->
@@ -246,30 +231,13 @@
                                                                         type="text"
                                                                         class="form-control"
                                                                         id="usernick"
+                                                                        name="usernick"
                                                                         required
                                                                 />
                                                                 <div id="result_name"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label
-                                                                    for="usergender"
-                                                                    class="col-3 col-form-label"
-                                                            >性别</label
-                                                            >
-                                                            <div class="col-9">
-                                                                <input
-                                                                        type="radio"
-                                                                        name="usergender"
-                                                                        value="boy"
-                                                                />男
-                                                                <input
-                                                                        type="radio"
-                                                                        name="usergender"
-                                                                        value="girl"
-                                                                />女
-                                                            </div>
-                                                        </div>
+                                                        
                                                         <div class="form-group row">
                                                             <label
                                                                     for="userage"
@@ -281,20 +249,22 @@
                                                                         type="text"
                                                                         class="form-control"
                                                                         id="userage"
+                                                                        name="userage"
                                                                 />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label
-                                                                    for="userphone"
+                                                                    for="usermail"
                                                                     class="col-3 col-form-label"
-                                                            >手机号</label
+                                                            >邮箱</label
                                                             >
                                                             <div class="col-9">
                                                                 <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        id="userphone"
+                                                                        id="usermail"
+                                                                        name="usermail"
                                                                 />
                                                             </div>
                                                         </div>
@@ -458,7 +428,7 @@
                             <ul>
                                 <li>
                                     <img
-                                            src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
+                                            src="{{ url_for('static',filename='assets/images/game-01.jpg') }}"
                                             alt=""
                                             class="templatemo-item"
                                     />
@@ -496,14 +466,14 @@
 
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
-<script src="{{ url_for('static',filename="vendor/jquery/jquery.min.js") }}"></script>
-<script src="{{ url_for('static',filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
+<script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
-<script src="{{ url_for('static',filename="assets/js/isotope.min.js") }}"></script>
-<script src="{{ url_for('static',filename="assets/js/owl-carousel.js") }}"></script>
-<script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
-<script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
-<script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
+<script src="{{ url_for('static',filename='assets/js/isotope.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/owl-carousel.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/tabs.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/popup.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/custom.js') }}"></script>
 
 <!-- 更换头像 -->
 <script>
@@ -593,18 +563,18 @@
         return nicknameRegex.test(nickname);
     }
 
-    const userphoneInput = document.getElementById("userphone");
-    userphoneInput.onblur = function () {
-        const userphone = userphoneInput.value;
-        if (isValidNickname(userphone)) {
-            alert("请输入正确的11位手机号");
+    const usermailInput = document.getElementById("usermail");
+    usermailInput.onblur = function () {
+        const usermail = usermailInput.value;
+        if (isValidMail(usermail)) {
+            alert("请输入正确的邮箱格式");
             return;
         }
     };
 
-    function isValidPhone(userphone) {
-        const userphoneRegex = /^1[356789]\d{9}$/;
-        return userphoneRegex.test(userphone);
+    function isValidMail(usermail) {
+        const usermailRegex = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/;
+        return usermailRegex.test(usermail);
     }
 </script>
 </body>
