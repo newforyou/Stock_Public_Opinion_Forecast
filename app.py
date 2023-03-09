@@ -31,7 +31,7 @@ migrate = Migrate(app, db)
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return 'Hello World!'
+    return render_template('login.html')
 
 
 @app.route('/index')
