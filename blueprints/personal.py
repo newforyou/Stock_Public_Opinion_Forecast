@@ -46,6 +46,10 @@ def profile():
             print(form1.errors)
             return render_template('profile.html')
 
+@bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 

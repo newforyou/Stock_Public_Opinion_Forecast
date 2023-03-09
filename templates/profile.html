@@ -137,6 +137,7 @@
 
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
+                        <li><a class="active" href="{{ url_for('personal.logout') }}">退出</a></li>
                         <li><a href="{{ url_for('personal.index') }}">首页</a></li>
                         <li>
                             <a href="{{ url_for('personal.profile') }}" class="active"
@@ -144,6 +145,7 @@
                                           alt=""
                             /></a>
                         </li>
+
                     </ul>
                     <a class="menu-trigger">
                         <span>Menu</span>

@@ -57,18 +57,21 @@
 
                     <!-- ***** 菜单模块开始 ***** -->
                     <ul class="nav">
+                        <li><a class="active" href="{{ url_for('personal.logout') }}">退出</a></li>
                         <li><a href="{{ url_for('personal.index') }}" class="active">首页</a></li>
                         <li>
-                            <a href="{{ url_for('personal.profile') }}"
-                            >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
+                            <a href="{{ url_for('personal.profile') }}">我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
                                           alt=""
                             /></a>
                         </li>
+
                     </ul>
+
                     <a class="menu-trigger">
                         <span>Menu</span>
                     </a>
                     <!-- ***** 菜单模块结束 ***** -->
+
                 </nav>
             </div>
         </div>
