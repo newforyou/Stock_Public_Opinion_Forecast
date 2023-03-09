@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from .forms import RegisterForm, LoginForm
 from models import UserModel
-# from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -16,8 +16,8 @@ def register():
         if form.validate():
             email = form.email.data
             username = form.username.data
-            password = form.username.data
-            user = UserModel(userMail=email, userName=username, password=password)
+            password = form.password.data
+            user = UserModel(userMail=email, userName=username, password=generate_password_hash(password))
             db.session.add(user)
             db.session.commit()
             return redirect(url_for("auth.login"))
@@ -39,8 +39,8 @@ def login():
             if not user:
                 print("邮箱再数据库中不存在！")
                 return redirect(url_for("auth.login"))
-            if user.password == password:
-                session['userId']=user.userId
+            if check_password_hash(user.password, password):
+                session['userId'] = user.userId
                 return redirect(url_for('index'))
             else:
                 print("密码错误！")
