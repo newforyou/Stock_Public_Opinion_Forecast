@@ -219,10 +219,10 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="/personal/profile/{{g.user.userId}}" id="formInsert">
+                                                    <form method="post">
                                                         <div class="form-group row">
                                                             <label
-                                                                    for="usernick"
+                                                                    for="nickname"
                                                                     class="col-3 col-form-label"
                                                             >昵称</label
                                                             >
@@ -230,8 +230,8 @@
                                                                 <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        id="usernick"
-                                                                        name="usernick"
+                                                                        id="nickname"
+                                                                        name="nickname"
                                                                         required
                                                                 />
                                                                 <div id="result_name"></div>
@@ -240,7 +240,7 @@
                                                         
                                                         <div class="form-group row">
                                                             <label
-                                                                    for="userage"
+                                                                    for="age"
                                                                     class="col-3 col-form-label"
                                                             >年龄</label
                                                             >
@@ -248,14 +248,14 @@
                                                                 <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        id="userage"
-                                                                        name="userage"
+                                                                        id="age"
+                                                                        name="age"
                                                                 />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label
-                                                                    for="usermail"
+                                                                    for="userMail"
                                                                     class="col-3 col-form-label"
                                                             >邮箱</label
                                                             >
@@ -263,23 +263,23 @@
                                                                 <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        id="usermail"
-                                                                        name="usermail"
+                                                                        id="userMail"
+                                                                        name="userMail"
                                                                         required
                                                                 />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label
-                                                                    for="introduction"
+                                                                    for="signature"
                                                                     class="col-3 col-form-label"
                                                             >个性签名</label
                                                             >
                                                             <div class="col-9">
-                                                                <!-- <input type="text" class="form-control" id="introduction"> -->
+                                                                <!-- <input type="text" class="form-control" id="signature"> -->
                                                                 <textarea
-                                                                        name="introduction"
-                                                                        id="introduction"
+                                                                        name="signature"
+                                                                        id="signature"
                                                                         cols="59"
                                                                         rows="3"
                                                                         style="
@@ -553,7 +553,7 @@
 
 <script>
     // 模态框昵称验证
-    const nicknameInput = document.getElementById("usernick");
+    const nicknameInput = document.getElementById("nickname");
     nicknameInput.onblur = function () {
         const nickname = nicknameInput.value;
         if (!isValidNickname(nickname)) {
@@ -570,18 +570,18 @@
         return nicknameRegex.test(nickname);
     }
 
-    const usermailInput = document.getElementById("usermail");
-    usermailInput.onblur = function () {
-        const usermail = usermailInput.value;
-        if (!isValidMail(usermail)) {
+    const userMailInput = document.getElementById("userMail");
+    userMailInput.onblur = function () {
+        const userMail = userMailInput.value;
+        if (!isValidMail(userMail)) {
             alert("请输入正确的邮箱格式");
             return;
         }
     };
 
-    function isValidMail(usermail) {
-        const usermailRegex = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/;
-        return usermailRegex.test(usermail);
+    function isValidMail(userMail) {
+        const userMailRegex = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/;
+        return userMailRegex.test(userMail);
     }
 </script>
 </body>
