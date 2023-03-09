@@ -58,7 +58,7 @@
     .modal {
         display: none; /* 默认隐藏 */
         position: fixed;
-        z-index: 1;
+        z-index: 101;
         left: 0;
         top: 0;
         width: 100%;
@@ -237,7 +237,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form action="" id="formInsert">
+                                                    <form method="post" action="/personal/profile/{{user_info.userId}}" id="formInsert">
                                                         <div class="form-group row">
                                                             <label
                                                                     for="usernick"
@@ -283,6 +283,7 @@
                                                                         class="form-control"
                                                                         id="usermail"
                                                                         name="usermail"
+                                                                        required
                                                                 />
                                                             </div>
                                                         </div>
@@ -306,6 +307,7 @@
                                                                 ></textarea>
                                                             </div>
                                                         </div>
+                                                        <input type="submit" id="user-submit" style="display: none; ">
                                                     </form>
                                                 </div>
                                                 <div
@@ -320,7 +322,7 @@
                                                     </button>
                                                     <button
                                                             class="btn btn-primary"
-                                                            onclick=""
+                                                            onclick="document.getElementById('user-submit').click()"
                                                             style="
                                   background-color: #e75e8d;
                                   border-color: #e75e8d;
@@ -347,7 +349,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form action="" id="formInsert2">
+                                                    <form method="post" action="/personal/profile/{{user_info.userId}}" id="formInsert2">
                                                         <div class="form-group row">
                                                             <label
                                                                     for="origin-pwd"
@@ -357,6 +359,7 @@
                                                             <div class="col-9">
                                                                 <input
                                                                         type="password"
+                                                                        name="origin-pwd"
                                                                         class="form-control"
                                                                         id="origin-pwd"
                                                                         required
@@ -374,7 +377,9 @@
                                                                 <input
                                                                         type="password"
                                                                         class="form-control"
+                                                                        name="new-pwd"
                                                                         id="new-pwd"
+                                                                        required
                                                                 />
                                                             </div>
                                                         </div>
@@ -382,16 +387,18 @@
                                                             <label
                                                                     for="verify-pwd"
                                                                     class="col-3 col-form-label"
-                                                            >重复密码</label
+                                                            >确认密码</label
                                                             >
                                                             <div class="col-9">
                                                                 <input
                                                                         type="password"
                                                                         class="form-control"
                                                                         id="verify-pwd"
+                                                                        required
                                                                 />
                                                             </div>
                                                         </div>
+                                                        <input type="submit" id="user-submit2" style="display: none; ">
                                                     </form>
                                                 </div>
                                                 <div
@@ -406,7 +413,7 @@
                                                     </button>
                                                     <button
                                                             class="btn btn-primary"
-                                                            onclick=""
+                                                            onclick="document.getElementById('user-submit2').click()"
                                                             style="
                                   background-color: #e75e8d;
                                   border-color: #e75e8d;
@@ -440,7 +447,7 @@
                 <div class="gaming-library profile-library">
                     <div class="col-lg-12">
                         <div class="heading-section">
-                            <h4><em>你的</em> 订阅</h4>
+                            <h4><em>我的</em> 订阅</h4>
                         </div>
                         <div class="item">
                             <ul>
@@ -584,7 +591,7 @@
     const usermailInput = document.getElementById("usermail");
     usermailInput.onblur = function () {
         const usermail = usermailInput.value;
-        if (isValidMail(usermail)) {
+        if (!isValidMail(usermail)) {
             alert("请输入正确的邮箱格式");
             return;
         }
