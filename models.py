@@ -38,18 +38,12 @@ class UserModel(db.Model):
 """
 class StockModel(db.Model):
     __tablename__ = "stock"
-    stockId = db.Column(db.Integer, primary_key=True)
-    tradeDate=db.Column(db.Float,nullable=False)
-    openPrice=db.Column(db.Float,nullable=False)
-    highestPrice=db.Column(db.Float,nullable=False)
-    lowestPrice=db.Column(db.Float,nullable=False)
-    closePrice=db.Column(db.Float,nullable=False)
-    yesterday_closePrice = db.Column(db.Float, nullable=False)
-    changeAmount = db.Column(db.Float, nullable=False)
-    changeAmplitude = db.Column(db.Float, nullable=False)
-    volume = db.Column(db.Float, nullable=False)
-    turnover = db.Column(db.Float, nullable=False)
-    creat_time=db.Column(db.DateTime, default=datetime.now)
+    stockId = db.Column(db.String(20), primary_key=True)
+    ts_code=db.Column(db.String(20),nullable=False)
+    name=db.Column(db.String(20),nullable=False)
+    industry=db.Column(db.String(20),nullable=False)
+    list_date=db.Column(db.String(20),nullable=False)
+    area=db.Column(db.String(20),nullable=False)
 
 """
 新闻表，字段为：
@@ -73,6 +67,6 @@ class NewsModel(db.Model):
 class SubscriptionModel(db.Model):
     __tablename__ = "subscription"
     sub_userId = db.Column(db.Integer,db.ForeignKey("user.userId"), primary_key=True)
-    sub_stockId=db.Column(db.Integer,db.ForeignKey("stock.stockId"),nullable=False)
+    sub_stockId=db.Column(db.String(20),db.ForeignKey("stock.stockId"),nullable=False)
     # 关系
     subscription=db.relationship(UserModel,backref="stocks")

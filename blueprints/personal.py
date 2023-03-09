@@ -7,12 +7,15 @@ from blueprints import personal
 from flask_paginate import Pagination, get_page_args
 
 bp = Blueprint("personal", __name__, url_prefix="/personal")
+
 @bp.route("/index",methods=['GET','POST'])
 def index():
-    # page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
-    # stocks = StockModel.query.order_by(StockModel.create_time.asc()).offset(offset).limit(per_page).all()
-    # pagination = Pagination(page=page, per_page=per_page, total=StockModel.query.count(), css_framework='bootstrap4')
-    return render_template("index.html")
+    page = int(request.args.get('page', 1))
+    per_page = 5
+    offset = (page - 1) * per_page
+    stocks = StockModel.query.order_by(StockModel.stockId).offset(offset).limit(per_page).all()
+    pagination = Pagination(page=page, per_page=per_page, total=StockModel.query.count(), css_framework='bootstrap4')
+    return render_template("index.html",stocks=stocks,pagination=pagination)
 
 @bp.route('/profile')
 def profile():

@@ -99,7 +99,7 @@
                     <div class="col-lg-12">
                         <div class="heading-section">
                         </div>
-
+{% for stock in stocks %}
                         <div class="item">
                             <ul>
                                 <li>
@@ -110,54 +110,20 @@
                                     />
                                 </li>
                                 <li>
-                                    <h4><a href="{{ url_for('personal.detail') }}" class="gupiao">002211</a></h4>
-                                    <span>宏达新材</span>
+                                    <h4><a href="{{ url_for('personal.detail') }}" class="gupiao">{{stock.name}}</a></h4>
+                                    <span>{{stock.ts_code}}</span>
                                 </li>
                                 <li>
-                                    <h4>0.43</h4>
-                                    <span>涨跌幅</span>
+                                    <h4>{{stock.industry}}</h4>
+                                    <span>所属行业</span>
                                 </li>
                                 <li>
-                                    <h4>18.78</h4>
-                                    <span>现价</span>
+                                    <h4>{{stock.area}}</h4>
+                                    <span>所属地区</span>
                                 </li>
                                 <li>
-                                    <h4>Currently</h4>
-                                    <span>Downloaded</span>
-                                </li>
-                                <li>
-                                    <div class="main-border-button border-active">
-                                        <a href="#">订阅</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                        <div class="item">
-                            <ul>
-                                <li>
-                                    <img
-                                            src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
-                                            alt=""
-                                            class="templatemo-item"
-                                    />
-                                </li>
-                                <li>
-                                    <h4>002211</h4>
-                                    <span>宏达新材</span>
-                                </li>
-                                <li>
-                                    <h4>0.43</h4>
-                                    <span>涨跌幅</span>
-                                </li>
-                                <li>
-                                    <h4>18.78</h4>
-                                    <span>现价</span>
-                                </li>
-                                <li>
-                                    <h4>Currently</h4>
-                                    <span>Downloaded</span>
+                                    <h4>{{stock.list_date}}</h4>
+                                    <span>上市时间</span>
                                 </li>
                                 <li>
                                     <div class="main-border-button border-active">
@@ -166,6 +132,11 @@
                                 </li>
                             </ul>
                         </div>
+{% endfor %}
+
+{{ pagination.info }}
+{{ pagination.links }}
+
 
 
                     </div>
