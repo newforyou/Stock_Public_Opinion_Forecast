@@ -3,6 +3,7 @@ from .forms import RegisterForm, LoginForm
 from models import UserModel
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db
+from blueprints import personal
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -41,7 +42,7 @@ def login():
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
                 session['userId'] = user.userId
-                return redirect(url_for('index'))
+                return redirect(url_for("personal.index"))
             else:
                 print("密码错误！")
                 return redirect(url_for("auth.login"))

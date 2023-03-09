@@ -1,10 +1,11 @@
 import warnings
 
-from flask import Flask, render_template, session, g
+from flask import Flask, render_template, session, g,redirect,url_for
 from flask_migrate import Migrate
 
 import config
 from blueprints.auth import bp as auth_bp
+from blueprints.personal import bp as public_bp
 from exts import db
 from models import UserModel
 
@@ -17,6 +18,7 @@ app.config.from_object(config)
 db.init_app(app)
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(public_bp)
 
 migrate = Migrate(app, db)
 
@@ -30,14 +32,8 @@ migrate = Migrate(app, db)
 #     return "hello world!"
 
 @app.route('/')
-def hello_world():  # put application's code here
-    return render_template('login.html')
-
-
-@app.route('/index')
-def index():
-    return render_template('index.html')
-
+def hello():
+    return redirect(url_for("auth.login"))
 
 @app.route('/profile')
 def profile():
