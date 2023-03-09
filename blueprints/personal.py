@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash, jsonify,g
-from .forms import RegisterForm, LoginForm,UpdatePersonalForm
+from .forms import RegisterForm, LoginForm,UpdatePersonalForm,UpdatePasswordForm
 from models import UserModel,StockModel,SubscriptionModel
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db
@@ -22,19 +22,31 @@ def profile():
     if request.method == 'GET':
         return render_template('profile.html')
     else:
-        form = UpdatePersonalForm(request.form)
-        if form.validate():
-            g.user.nickname = form.nickname.data
-            g.user.age = form.age.data
-            g.user.userMail = form.userMail.data
-            g.user.signature=form.signature.data
+        form1 = UpdatePersonalForm(request.form)
+        if form1.validate():
+            g.user.nickname = form1.nickname.data
+            g.user.age = form1.age.data
+            g.user.userMail = form1.userMail.data
+            g.user.signature=form1.signature.data
             db.session.merge(g.user)
             db.session.commit()
-            print("修改成功")
+            print("修改个人信息成功")
             return render_template('profile.html')
         else:
-            print(form.errors)
+            form2 = UpdatePasswordForm(request.form)
+            if form2.validate():
+                g.user.password = generate_password_hash(form2.newpwd.data)
+                db.session.merge(g.user)
+                db.session.commit()
+                print("修改密码成功")
+                return redirect("/")
+            else:
+                print(form2.errors)
+                return render_template('profile.html')
+            print(form1.errors)
             return render_template('profile.html')
+
+
 
 
 
