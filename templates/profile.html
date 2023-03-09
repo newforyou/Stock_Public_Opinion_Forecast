@@ -1,592 +1,611 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
     />
 
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
     <link
-      href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
-      rel="stylesheet"
+            href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
+            rel="stylesheet"
     />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/fontawesome.css") }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/fontawesome.css") }}"/>
     <link
-      rel="stylesheet"
-      href="{{ url_for('static',filename="assets/css/templatemo-cyborg-gaming.css") }}"
+            rel="stylesheet"
+            href="{{ url_for('static',filename="assets/css/templatemo-cyborg-gaming.css") }}"
     />
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/owl.css") }}" />
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/animate.css") }}" />
-    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/swiper-bundle.min.css") }}" />
-  </head>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/owl.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/animate.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="assets/css/swiper-bundle.min.css") }}"/>
+</head>
 
-  <style>
+<style>
     /* 更改头像按钮样式 */
     .fileBtn {
-      background-color: #e75e8d;
-      color: #fffefe;
-      height: 45px;
-      width: 100px;
-      border: 1px solid #e75e8d;
-      border-radius: 25px;
-      text-align: center;
-      line-height: 40px;
-      margin: 15px 0 0 75px;
-      transition: 0.3s;
+        background-color: #e75e8d;
+        color: #fffefe;
+        height: 45px;
+        width: 100px;
+        border: 1px solid #e75e8d;
+        border-radius: 25px;
+        text-align: center;
+        line-height: 40px;
+        margin: 15px 0 0 75px;
+        transition: 0.3s;
     }
+
     .fileBtn:hover {
-      background-color: #fffefe;
-      color: #e75e8d;
-      border: 1px solid #e75e8d;
+        background-color: #fffefe;
+        color: #e75e8d;
+        border: 1px solid #e75e8d;
     }
 
     /* 模态框样式 */
     /* 模态框背景 */
     .modal {
-      display: none; /* 默认隐藏 */
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
+        display: none; /* 默认隐藏 */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     /* 模态框内容 */
     .modal-content {
-      background-color: #1f2122;
-      color: #fffefe;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #1f2122;
-      width: 50%;
-      border-radius: 25px;
+        background-color: #1f2122;
+        color: #fffefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #1f2122;
+        width: 50%;
+        border-radius: 25px;
     }
 
     #formInsert > div {
-      margin-bottom: 10px;
+        margin-bottom: 10px;
     }
 
     #formInsert2 > div {
-      margin-bottom: 10px;
+        margin-bottom: 10px;
     }
 
     .form-control {
-      background-color: #fffefe;
+        background-color: #fffefe;
     }
 
     /* 按钮样式 */
     .myBtn {
-      height: 46px;
-      border: 1px solid #ec6090;
-      border-radius: 25px;
-      color: #e75e8d;
-      background-color: #1f2122;
-      margin-top: 15px;
-      transition: 0.3s;
+        height: 46px;
+        border: 1px solid #ec6090;
+        border-radius: 25px;
+        color: #e75e8d;
+        background-color: #1f2122;
+        margin-top: 15px;
+        transition: 0.3s;
     }
 
     .myBtn:hover {
-      background-color: #ffffff;
+        background-color: #ffffff;
     }
 
     /* 关闭按钮 */
     .close {
-      color: #aaa;
-      float: right;
-      font-size: 30px;
-      font-weight: bold;
+        color: #aaa;
+        float: right;
+        font-size: 30px;
+        font-weight: bold;
     }
+
     .close:hover,
     .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
     }
-  </style>
+</style>
 
-  <body>
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="main-nav">
-              <!-- ***** Logo Start ***** -->
-              <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt="" />
-              </a>
-              <!-- ***** Logo End ***** -->
-
-              <!-- ***** Menu Start ***** -->
-              <ul class="nav">
-                <li><a href="{{ url_for('index') }}">首页</a></li>
-                <li>
-                  <a href="{{ url_for('profile') }}" class="active"
-                    >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}" alt=""
-                  /></a>
-                </li>
-              </ul>
-              <a class="menu-trigger">
-                <span>Menu</span>
-              </a>
-              <!-- ***** Menu End ***** -->
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-
+<body>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
     <div class="container">
-      <div class="row">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{{ url_for('index') }}" class="logo">
+                        <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt=""/>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="{{ url_for('index') }}">首页</a></li>
+                        <li>
+                            <a href="{{ url_for('profile') }}" class="active"
+                            >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
+                                          alt=""
+                            /></a>
+                        </li>
+                    </ul>
+                    <a class="menu-trigger">
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<div class="container">
+    <div class="row">
         <div class="col-lg-12">
-          <div class="page-content">
-            <!-- ***** Banner Start ***** -->
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="main-profile">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <img
-                        src="{{ url_for('static',filename="assets/images/profile.jpg") }}"
-                        id="userpicture"
-                        alt=""
-                        style="border-radius: 23px"
-                      />
-                      <input
-                        type="file"
-                        id="fileInput"
-                        accept="image/*"
-                        onchange="previewFile()"
-                        style="display: none"
-                      />
-                      <input
-                        type="button"
-                        value="更改头像"
-                        class="fileBtn"
-                        onclick="document.getElementById('fileInput').click();"
-                      />
-                    </div>
-                    <div class="col-lg-4 align-self-center">
-                      <div class="main-info header-text">
-                        <span>简介</span>
-                        <p>昵称：</p>
-                        <p>性别：</p>
-                        <p>年龄：</p>
-                        <p>手机号：</p>
-                        <div style="height: 85px; width: 340px">
-                          <p
-                            style="
+            <div class="page-content">
+                <!-- ***** Banner Start ***** -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="main-profile">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <img
+                                            src="{{ url_for('static',filename="assets/images/profile.jpg") }}"
+                                            id="userpicture"
+                                            alt=""
+                                            style="border-radius: 23px"
+                                    />
+                                    <input
+                                            type="file"
+                                            id="fileInput"
+                                            accept="image/*"
+                                            onchange="previewFile()"
+                                            style="display: none"
+                                    />
+                                    <input
+                                            type="button"
+                                            value="更改头像"
+                                            class="fileBtn"
+                                            onclick="document.getElementById('fileInput').click();"
+                                    />
+                                </div>
+                                <div class="col-lg-4 align-self-center">
+                                    <div class="main-info header-text">
+                                        <span>简介</span>
+                                        {% if user %}
+                                            <p>昵称：{{ user.nickname }}</p>
+                                            <p>年龄：{{ user.age }}</p>
+                                            <div style="height: 85px; width: 340px">
+                                                <p
+                                                        style="
                               width: 100%;
                               height: 100%;
                               word-break: break-all;
                               word-wrap: break-word;
                             "
-                          >
-                            个性签名：
-                          </p>
-                        </div>
-                        <!-- 修改信息模态框 -->
-                        <div id="myModal" class="modal">
-                          <!-- 模态框内容 -->
-                          <div class="modal-content">
-                            <div
-                              class="modal-header"
-                              style="border-bottom: 1px solid #e75e8d"
-                            >
-                              <span calss="col-lg-9">修改信息</span>
-                              <span class="close" style="font-size: 20px"
-                                >&times;</span
-                              >
-                            </div>
+                                                >
+                                                    个性签名：{{ user.signature }}
+                                                </p>
+                                            </div>
+                                        {% else %}
+                                            <p>昵称：</p>
+                                            <p>年龄：</p>
+                                            <div style="height: 85px; width: 340px">
+                                                <p
+                                                        style="
+                              width: 100%;
+                              height: 100%;
+                              word-break: break-all;
+                              word-wrap: break-word;
+                            "
+                                                >
+                                                    个性签名：
+                                                </p>
+                                            </div>
+                                        {% endif %}
+                                        <!-- 修改信息模态框 -->
+                                        <div id="myModal" class="modal">
+                                            <!-- 模态框内容 -->
+                                            <div class="modal-content">
+                                                <div
+                                                        class="modal-header"
+                                                        style="border-bottom: 1px solid #e75e8d"
+                                                >
+                                                    <span calss="col-lg-9">修改信息</span>
+                                                    <span class="close" style="font-size: 20px"
+                                                    >&times;</span
+                                                    >
+                                                </div>
 
-                            <div class="modal-body">
-                              <form action="" id="formInsert">
-                                <div class="form-group row">
-                                  <label
-                                    for="usernick"
-                                    class="col-3 col-form-label"
-                                    >昵称</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="usernick"
-                                      required
-                                    />
-                                    <div id="result_name"></div>
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label
-                                    for="usergender"
-                                    class="col-3 col-form-label"
-                                    >性别</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="radio"
-                                      name="usergender"
-                                      value="boy"
-                                    />男
-                                    <input
-                                      type="radio"
-                                      name="usergender"
-                                      value="girl"
-                                    />女
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label
-                                    for="userage"
-                                    class="col-3 col-form-label"
-                                    >年龄</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="userage"
-                                    />
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label
-                                    for="userphone"
-                                    class="col-3 col-form-label"
-                                    >手机号</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="userphone"
-                                    />
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label
-                                    for="introduction"
-                                    class="col-3 col-form-label"
-                                    >个性签名</label
-                                  >
-                                  <div class="col-9">
-                                    <!-- <input type="text" class="form-control" id="introduction"> -->
-                                    <textarea
-                                      name="introduction"
-                                      id="introduction"
-                                      cols="59"
-                                      rows="3"
-                                      style="
+                                                <div class="modal-body">
+                                                    <form action="" id="formInsert">
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="usernick"
+                                                                    class="col-3 col-form-label"
+                                                            >昵称</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="text"
+                                                                        class="form-control"
+                                                                        id="usernick"
+                                                                        required
+                                                                />
+                                                                <div id="result_name"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="usergender"
+                                                                    class="col-3 col-form-label"
+                                                            >性别</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="radio"
+                                                                        name="usergender"
+                                                                        value="boy"
+                                                                />男
+                                                                <input
+                                                                        type="radio"
+                                                                        name="usergender"
+                                                                        value="girl"
+                                                                />女
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="userage"
+                                                                    class="col-3 col-form-label"
+                                                            >年龄</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="text"
+                                                                        class="form-control"
+                                                                        id="userage"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="userphone"
+                                                                    class="col-3 col-form-label"
+                                                            >手机号</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="text"
+                                                                        class="form-control"
+                                                                        id="userphone"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="introduction"
+                                                                    class="col-3 col-form-label"
+                                                            >个性签名</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <!-- <input type="text" class="form-control" id="introduction"> -->
+                                                                <textarea
+                                                                        name="introduction"
+                                                                        id="introduction"
+                                                                        cols="59"
+                                                                        rows="3"
+                                                                        style="
                                         border-radius: 0.38rem;
                                         outline: none;
                                       "
-                                    ></textarea>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            <div
-                              class="modal-footer"
-                              style="border-top: 1px solid #e75e8d"
-                            >
-                              <button
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                              >
-                                取消
-                              </button>
-                              <button
-                                class="btn btn-primary"
-                                onclick=""
-                                style="
+                                                                ></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div
+                                                        class="modal-footer"
+                                                        style="border-top: 1px solid #e75e8d"
+                                                >
+                                                    <button
+                                                            class="btn btn-secondary"
+                                                            data-dismiss="modal"
+                                                    >
+                                                        取消
+                                                    </button>
+                                                    <button
+                                                            class="btn btn-primary"
+                                                            onclick=""
+                                                            style="
                                   background-color: #e75e8d;
                                   border-color: #e75e8d;
                                 "
-                              >
-                                保存
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                                                    >
+                                                        保存
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <!-- 修改密码模态框 -->
-                        <div id="myModal2" class="modal">
-                          <!-- 模态框内容 -->
-                          <div class="modal-content">
-                            <div
-                              class="modal-header"
-                              style="border-bottom: 1px solid #e75e8d"
-                            >
-                              <span calss="col-lg-9">修改密码</span>
-                              <span class="close" style="font-size: 20px"
-                                >&times;</span
-                              >
-                            </div>
+                                        <!-- 修改密码模态框 -->
+                                        <div id="myModal2" class="modal">
+                                            <!-- 模态框内容 -->
+                                            <div class="modal-content">
+                                                <div
+                                                        class="modal-header"
+                                                        style="border-bottom: 1px solid #e75e8d"
+                                                >
+                                                    <span calss="col-lg-9">修改密码</span>
+                                                    <span class="close" style="font-size: 20px"
+                                                    >&times;</span
+                                                    >
+                                                </div>
 
-                            <div class="modal-body">
-                              <form action="" id="formInsert2">
-                                <div class="form-group row">
-                                  <label
-                                    for="origin-pwd"
-                                    class="col-3 col-form-label"
-                                    >原密码</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="password"
-                                      class="form-control"
-                                      id="origin-pwd"
-                                      required
-                                    />
-                                  </div>
-                                </div>
+                                                <div class="modal-body">
+                                                    <form action="" id="formInsert2">
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="origin-pwd"
+                                                                    class="col-3 col-form-label"
+                                                            >原密码</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="password"
+                                                                        class="form-control"
+                                                                        id="origin-pwd"
+                                                                        required
+                                                                />
+                                                            </div>
+                                                        </div>
 
-                                <div class="form-group row">
-                                  <label
-                                    for="new-pwd"
-                                    class="col-3 col-form-label"
-                                    >新密码</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="password"
-                                      class="form-control"
-                                      id="new-pwd"
-                                    />
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label
-                                    for="verify-pwd"
-                                    class="col-3 col-form-label"
-                                    >重复密码</label
-                                  >
-                                  <div class="col-9">
-                                    <input
-                                      type="password"
-                                      class="form-control"
-                                      id="verify-pwd"
-                                    />
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            <div
-                              class="modal-footer"
-                              style="border-top: 1px solid #e75e8d"
-                            >
-                              <button
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                              >
-                                取消
-                              </button>
-                              <button
-                                class="btn btn-primary"
-                                onclick=""
-                                style="
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="new-pwd"
+                                                                    class="col-3 col-form-label"
+                                                            >新密码</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="password"
+                                                                        class="form-control"
+                                                                        id="new-pwd"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label
+                                                                    for="verify-pwd"
+                                                                    class="col-3 col-form-label"
+                                                            >重复密码</label
+                                                            >
+                                                            <div class="col-9">
+                                                                <input
+                                                                        type="password"
+                                                                        class="form-control"
+                                                                        id="verify-pwd"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div
+                                                        class="modal-footer"
+                                                        style="border-top: 1px solid #e75e8d"
+                                                >
+                                                    <button
+                                                            class="btn btn-secondary"
+                                                            data-dismiss="modal"
+                                                    >
+                                                        取消
+                                                    </button>
+                                                    <button
+                                                            class="btn btn-primary"
+                                                            onclick=""
+                                                            style="
                                   background-color: #e75e8d;
                                   border-color: #e75e8d;
                                 "
-                              >
-                                保存
-                              </button>
+                                                    >
+                                                        保存
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 触发模态框的按钮 -->
+                                        <button class="col-5 myBtn">修改信息</button>
+                                        <button class="col-5 myBtn" style="float: right">
+                                            修改密码
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 align-items-start">
+                                    <ul style="border: 1px solid #e75e8d;">
+                                        <li style="color:rgba(255,255,255,0.9);">股票订阅数 <span>3</span></li>
+                                    </ul>
+                                </div>
                             </div>
-                          </div>
                         </div>
-
-                        <!-- 触发模态框的按钮 -->
-                        <button class="col-5 myBtn">修改信息</button>
-                        <button class="col-5 myBtn" style="float: right">
-                          修改密码
-                        </button>
-                      </div>
                     </div>
-                    <div class="col-lg-4 align-items-start">
-                      <ul style="border: 1px solid #e75e8d;">
-                        <li style="color:rgba(255,255,255,0.9);">股票订阅数 <span>3</span></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-            <!-- ***** Banner End ***** -->
+                <!-- ***** Banner End ***** -->
 
-            <!-- ***** Gaming Library Start ***** -->
-            <div class="gaming-library profile-library">
-              <div class="col-lg-12">
-                <div class="heading-section">
-                  <h4><em>你的</em> 订阅</h4>
+                <!-- ***** Gaming Library Start ***** -->
+                <div class="gaming-library profile-library">
+                    <div class="col-lg-12">
+                        <div class="heading-section">
+                            <h4><em>你的</em> 订阅</h4>
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <li>
+                                    <img
+                                            src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
+                                            alt=""
+                                            class="templatemo-item"
+                                    />
+                                </li>
+                                <li>
+                                    <h4>股票id</h4>
+                                    <span>Sandbox</span>
+                                </li>
+                                <li>
+                                    <h4>交易日期</h4>
+                                    <span>24/08/2036</span>
+                                </li>
+                                <li>
+                                    <h4>收盘价</h4>
+                                    <span>634 H 22 Mins</span>
+                                </li>
+                                <li>
+                                    <h4>涨跌幅</h4>
+                                    <span>Downloaded</span>
+                                </li>
+                                <li>
+                                    <div class="main-border-button border-active">
+                                        <a href="{{ url_for('detail') }}">进入详情</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="item">
-                  <ul>
-                    <li>
-                      <img
-                        src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
-                        alt=""
-                        class="templatemo-item"
-                      />
-                    </li>
-                    <li>
-                      <h4>股票id</h4>
-                      <span>Sandbox</span>
-                    </li>
-                    <li>
-                      <h4>交易日期</h4>
-                      <span>24/08/2036</span>
-                    </li>
-                    <li>
-                      <h4>收盘价</h4>
-                      <span>634 H 22 Mins</span>
-                    </li>
-                    <li>
-                      <h4>涨跌幅</h4>
-                      <span>Downloaded</span>
-                    </li>
-                    <li>
-                      <div class="main-border-button border-active">
-                        <a href="{{ url_for('detail') }}">进入详情</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                <!-- ***** Gaming Library End ***** -->
             </div>
-            <!-- ***** Gaming Library End ***** -->
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ url_for('static',filename="vendor/jquery/jquery.min.js") }}"></script>
-    <script src="{{ url_for('static',filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="{{ url_for('static',filename="vendor/jquery/jquery.min.js") }}"></script>
+<script src="{{ url_for('static',filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
 
-    <script src="{{ url_for('static',filename="assets/js/isotope.min.js") }}"></script>
-    <script src="{{ url_for('static',filename="assets/js/owl-carousel.js") }}"></script>
-    <script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
-    <script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
-    <script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/isotope.min.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/owl-carousel.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
 
-    <!-- 更换头像 -->
-    <script>
-      function previewFile() {
+<!-- 更换头像 -->
+<script>
+    function previewFile() {
         const file = document.querySelector('input[type="file"]').files[0];
         const reader = new FileReader();
         reader.addEventListener(
-          "load",
-          function () {
-            document.getElementById("userpicture").src = reader.result;
-          },
-          false
+            "load",
+            function () {
+                document.getElementById("userpicture").src = reader.result;
+            },
+            false
         );
 
         if (file) {
-          reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
         }
-      }
-    </script>
+    }
+</script>
 
-    <!-- 模态框脚本 -->
-    <script>
-      // 获取模态框
-      var modal = document.getElementById("myModal");
-      var modal2 = document.getElementById("myModal2");
+<!-- 模态框脚本 -->
+<script>
+    // 获取模态框
+    var modal = document.getElementById("myModal");
+    var modal2 = document.getElementById("myModal2");
 
-      // 获取打开模态框的按钮
-      var btn = document.getElementsByClassName("myBtn")[0];
-      var btn2 = document.getElementsByClassName("myBtn")[1];
+    // 获取打开模态框的按钮
+    var btn = document.getElementsByClassName("myBtn")[0];
+    var btn2 = document.getElementsByClassName("myBtn")[1];
 
-      // 获取关闭模态框的 <span> 元素
-      var span = document.getElementsByClassName("close")[0];
-      var span2 = document.getElementsByClassName("close")[1];
+    // 获取关闭模态框的 <span> 元素
+    var span = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementsByClassName("close")[1];
 
-      // 获取关闭模态框的 "取消"按钮 元素
-      var btnCancel = document.getElementsByClassName("btn-secondary")[0];
-      var btnCancel2 = document.getElementsByClassName("btn-secondary")[1];
+    // 获取关闭模态框的 "取消"按钮 元素
+    var btnCancel = document.getElementsByClassName("btn-secondary")[0];
+    var btnCancel2 = document.getElementsByClassName("btn-secondary")[1];
 
-      // 当用户点击按钮时，打开模态框
-      btn.onclick = function () {
+    // 当用户点击按钮时，打开模态框
+    btn.onclick = function () {
         modal.style.display = "block";
-      };
-      btn2.onclick = function () {
+    };
+    btn2.onclick = function () {
         modal2.style.display = "block";
-      };
+    };
 
-      // 当用户点击 <span> (x)时，关闭模态框
-      span.onclick = function () {
+    // 当用户点击 <span> (x)时，关闭模态框
+    span.onclick = function () {
         modal.style.display = "none";
-      };
-      span2.onclick = function () {
+    };
+    span2.onclick = function () {
         modal2.style.display = "none";
-      };
+    };
 
-      // 当用户点击 "取消"按钮时，关闭模态框
-      btnCancel.onclick = function () {
+    // 当用户点击 "取消"按钮时，关闭模态框
+    btnCancel.onclick = function () {
         modal.style.display = "none";
-      };
-      btnCancel2.onclick = function () {
+    };
+    btnCancel2.onclick = function () {
         modal2.style.display = "none";
-      };
+    };
 
-      // 当用户点击任意地方时，关闭它
-      // window.onclick = function(event) {
-      // if (event.target == modal) {
-      // modal.style.display = "none";
-      // }
-      // }
-    </script>
+    // 当用户点击任意地方时，关闭它
+    // window.onclick = function(event) {
+    // if (event.target == modal) {
+    // modal.style.display = "none";
+    // }
+    // }
+</script>
 
-    <script>
-      // 模态框昵称验证
-      const nicknameInput = document.getElementById("usernick");
-      nicknameInput.onblur = function () {
+<script>
+    // 模态框昵称验证
+    const nicknameInput = document.getElementById("usernick");
+    nicknameInput.onblur = function () {
         const nickname = nicknameInput.value;
         if (!isValidNickname(nickname)) {
-          alert(
-            "请输入 2 到 10 个字符，只包含中文、字母、数字、下划线和横线。"
-          );
-          return;
+            alert(
+                "请输入 2 到 10 个字符，只包含中文、字母、数字、下划线和横线。"
+            );
+            return;
         }
-      };
+    };
 
-      function isValidNickname(nickname) {
+    function isValidNickname(nickname) {
         // 匹配规则：只包含中文、字母、数字、下划线和横线，长度为 2 到 10 个字符
         const nicknameRegex = /^[\u4e00-\u9fa5a-zA-Z0-9_-]{2,10}$/;
         return nicknameRegex.test(nickname);
-      }
+    }
 
-      const userphoneInput = document.getElementById("userphone");
-      userphoneInput.onblur = function () {
+    const userphoneInput = document.getElementById("userphone");
+    userphoneInput.onblur = function () {
         const userphone = userphoneInput.value;
         if (isValidNickname(userphone)) {
-          alert("请输入正确的11位手机号");
-          return;
+            alert("请输入正确的11位手机号");
+            return;
         }
-      };
-      function isValidPhone(userphone) {
+    };
+
+    function isValidPhone(userphone) {
         const userphoneRegex = /^1[356789]\d{9}$/;
         return userphoneRegex.test(userphone);
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

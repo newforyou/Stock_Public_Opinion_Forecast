@@ -15,7 +15,7 @@ class UserModel(db.Model):
     __tablename__="user"
     userId=db.Column(db.Integer,primary_key=True,autoincrement=True)
     userName=db.Column(db.String(16),nullable=False)
-    password=db.Column(db.String(20),nullable=False)
+    password=db.Column(db.String(200),nullable=False)
     userMail=db.Column(db.String(30),nullable=False)
     nickname=db.Column(db.String(20),default='请自定义昵称')
     profilePhoto=db.Column(db.String(256),default='./static/assets/images/popular-01.jpg')

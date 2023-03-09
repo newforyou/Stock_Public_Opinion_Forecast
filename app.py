@@ -1,14 +1,12 @@
-from flask import Flask, request, render_template, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text
+import warnings
+
+from flask import Flask, render_template, session, g
 from flask_migrate import Migrate
 
-from exts import db
-from models import UserModel, StockModel, SubscriptionModel, NewsModel
-from blueprints.auth import bp as auth_bp
-
 import config
-import warnings
+from blueprints.auth import bp as auth_bp
+from exts import db
+from models import UserModel
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -50,13 +48,21 @@ def profile():
 def detail():
     return render_template('details.html')
 
-@app.route('/test')
-def test():
-    return render_template('login.html')
 
-@app.route('/test1')
-def test1():
-    return render_template('register.html')
+@app.before_request
+def my_before_request():
+    userId = session.get("userId")
+    if userId:
+        user = UserModel.query.get(userId)
+        setattr(g, "user", user)
+    else:
+        setattr(g, "user", None)
+
+
+# 上下文处理器
+@app.context_processor
+def my_context_processor():
+    return {"user": g.user}
 
 
 if __name__ == '__main__':
