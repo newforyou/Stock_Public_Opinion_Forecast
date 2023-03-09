@@ -1,5 +1,6 @@
 #数据库表模型，需要时调用此模块
 from exts import db
+from datetime import datetime
 
 """
 用户表，字段为：
@@ -48,6 +49,7 @@ class StockModel(db.Model):
     changeAmplitude = db.Column(db.Float, nullable=False)
     volume = db.Column(db.Float, nullable=False)
     turnover = db.Column(db.Float, nullable=False)
+    creat_time=db.Column(db.DateTime, default=datetime.now)
 
 """
 新闻表，字段为：
@@ -73,4 +75,4 @@ class SubscriptionModel(db.Model):
     sub_userId = db.Column(db.Integer,db.ForeignKey("user.userId"), primary_key=True)
     sub_stockId=db.Column(db.Integer,db.ForeignKey("stock.stockId"),nullable=False)
     # 关系
-    # 后期查询操作自定义
+    subscription=db.relationship(UserModel,backref="stocks")

@@ -37,7 +37,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo开始 ***** -->
-                    <a href="{{ url_for('index') }}" class="logo">
+                    <a href="{{ url_for('personal.index') }}" class="logo">
                         <img src="{{ url_for('static',filename="assets/images/logo.png") }}" alt=""/>
                     </a>
                     <!-- ***** Logo结束 ***** -->
@@ -57,9 +57,9 @@
                     <!-- ***** 搜索模块结束 ***** -->
                     <!-- ***** 菜单栏开始 ***** -->
                     <ul class="nav">
-                        <li><a href="{{ url_for('index') }}">首页</a></li>
+                        <li><a href="{{ url_for('personal.index') }}">首页</a></li>
                         <li>
-                            <a href="{{ url_for('profile') }}"
+                            <a href="{{ url_for('personal.profile') }}"
                             >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
                                           alt=""
                             /></a>

@@ -35,14 +35,7 @@ migrate = Migrate(app, db)
 def hello():
     return redirect(url_for("auth.login"))
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
 
-
-@app.route('/detail')
-def detail():
-    return render_template('details.html')
 
 
 @app.before_request

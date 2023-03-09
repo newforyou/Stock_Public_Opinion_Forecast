@@ -12,7 +12,7 @@
             rel="stylesheet"
     />
 
-    <title>Cyborg - Awesome HTML5 Template</title>
+    <title>我的首页</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename="vendor/bootstrap/css/bootstrap.min.css") }}"
@@ -45,7 +45,7 @@
                         <form id="search" action="#">
                             <input
                                     type="text"
-                                    placeholder="请输入关键字..."
+                                    placeholder="请输入股票的关键字信息..."
                                     id="searchText"
                                     name="searchKeyword"
                                     onkeypress="handle"
@@ -59,7 +59,7 @@
                     <ul class="nav">
                         <li><a href="{{ url_for('personal.index') }}" class="active">首页</a></li>
                         <li>
-                            <a href="{{ url_for('profile') }}"
+                            <a href="{{ url_for('personal.profile') }}"
                             >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
                                           alt=""
                             /></a>
@@ -86,8 +86,8 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="header-text">
-                                <h6>Welcome To Cyborg</h6>
-                                <h4><em>股票信息</em> 展示</h4>
+                                <h6>Welcome To Our Project</h6>
+                                <h4><em>股票信息列表</em> 展示</h4>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                                     />
                                 </li>
                                 <li>
-                                    <h4><a href="{{ url_for('detail') }}" class="gupiao">002211</a></h4>
+                                    <h4><a href="{{ url_for('personal.detail') }}" class="gupiao">002211</a></h4>
                                     <span>宏达新材</span>
                                 </li>
                                 <li>
