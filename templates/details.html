@@ -29,6 +29,63 @@
 
 </head>
 
+<style>
+    .header-area .main-nav .nav li:hover a,
+.header-area .main-nav .nav li a.active {
+        color: #fff !important;
+    }
+    .header-area .main-nav .nav li:last-child:hover a, 
+.header-area .main-nav .nav li:last-child a.active{
+        background-color: #27292a !important;
+    }
+
+    #index a{
+        color: #fff;
+        padding: 8px 10px 8px 10px;
+        position: relative;
+        right: 30px; 
+        border-radius: 23px;
+        width: 120px;
+        height: 47px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #27292a;
+        border: 1px solid #e75e8d;
+    }
+
+    #index a:hover{
+        background-color: #e75e8d;
+    }
+
+    #person a{
+        border: 1px solid #e75e8d;
+    }
+
+    #person:hover .active{
+        background-color: #e75e8d !important;
+        border-radius: 23px 23px 0 0;
+    }
+    #person:hover #log-out{
+        background-color: #e75e8d !important;
+        transition: 0.3s;
+        transform: scaleY(1);
+    }
+
+    #log-out{
+        padding: 0;
+        width: 132px;
+        height: 46px;
+        border-radius: 0 0 23px 23px;
+        text-align: center;
+        line-height: 46px;
+        transition: 0.3s;
+        transform: scaleY(0);
+        transform-origin: 50% 0;
+        background-color: #1f2122;
+    }
+
+</style>
+
 <body>
 <!-- ***** 头部开始 ***** -->
 <header class="header-area header-sticky">
@@ -57,13 +114,18 @@
                     <!-- ***** 搜索模块结束 ***** -->
                     <!-- ***** 菜单栏开始 ***** -->
                     <ul class="nav">
-                        <li><a class="active" href="{{ url_for('personal.logout') }}">退出</a></li>
-                        <li><a href="{{ url_for('personal.index') }}">首页</a></li>
-                        <li>
-                            <a href="{{ url_for('personal.profile') }}"
-                            >我的订阅<img src="{{ url_for('static',filename="assets/images/profile-header.jpg") }}"
+                        <li style="width: 120px;" id="index">
+                            <a 
+                            href="{{ url_for('personal.index') }}">
+                            回到首页
+                            </a>
+                        </li>
+                        <li id="person" >
+                            <a href="{{ url_for('personal.profile') }}" class="active"
+                            >我的订阅<img src="{{ url_for('static',filename='assets/images/profile-header.jpg') }}"
                                           alt=""
                             /></a>
+                            <a href="{{ url_for('personal.logout') }}" id="log-out">退出登录</a>
                         </li>
 
                     </ul>
