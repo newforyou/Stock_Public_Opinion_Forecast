@@ -187,7 +187,7 @@
                                 </li>
                                 <li>
                                     <div class="main-border-button border-active">
-                                        <a href="#">订阅</a>
+                                        <a href="#" class="subscribe-button" data-tsc="{{ stock.ts_code }}">订阅</a>
                                     </div>
                                 </li>
                             </ul>
@@ -228,5 +228,41 @@
     <script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
     <script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
     <script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
+    <script>
+    // 获取所有订阅按钮
+    const subscribeButtons = document.querySelectorAll('.subscribe-button');
+
+    // 为每个订阅按钮添加点击事件
+    subscribeButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            // 获取当前点击的股票代码
+            const tsCode = button.getAttribute('data-tsc');
+
+            // 发送POST请求给后端进行处理
+            fetch('/personal/subscribe', {
+                method: 'POST',
+                body: JSON.stringify({ ts_code: tsCode }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 处理成功
+                    alert('订阅成功！');
+                } else {
+                    // 处理失败
+                    alert('订阅失败！');
+                }
+            })
+            .catch(error => {
+                console.error('请求出错：', error);
+                alert('请求出错！');
+            });
+        });
+    });
+</script>
 </body>
 </html>

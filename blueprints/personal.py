@@ -51,8 +51,12 @@ def logout():
     session.clear()
     return redirect("/")
 
-
-
+@bp.route("/subscribe",methods=['POST'])
+def subscribe():
+    data = request.get_json()
+    ts_code = data['ts_code']
+    print(ts_code)
+    return redirect(url_for('personal.index'))
 
 @bp.route('/detail')
 def detail():
