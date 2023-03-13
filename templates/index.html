@@ -93,7 +93,7 @@
 
                     <!-- ***** 搜索模块开始 ***** -->
                     <div class="search-input">
-                        <form id="search" action="#">
+                        <form id="search" method="GET" action="{{ url_for('personal.search') }}">
                             <input
                                     type="text"
                                     placeholder="请输入股票的关键字信息..."
@@ -164,7 +164,7 @@
                             <ul>
                                 <li>
                                     <img
-                                            src="{{ url_for('static',filename="assets/images/game-01.jpg") }}"
+                                            src="{{ url_for('static',filename="assets/images/stockimg.png") }}"
                                             alt=""
                                             class="templatemo-item"
                                     />
@@ -193,12 +193,10 @@
                             </ul>
                         </div>
 {% endfor %}
-
-{{ pagination.info }}
-{{ pagination.links }}
-
-
-
+                        <div style="color: white">
+                            {{ pagination.info }}
+                            {{ pagination.links }}
+                        </div>
                     </div>
                     <!-- ***** 股票信息列表结束 ***** -->
                 </div>

@@ -17,6 +17,16 @@ def index():
     pagination = Pagination(page=page, per_page=per_page, total=StockModel.query.count(), css_framework='bootstrap4')
     return render_template("index.html",stocks=stocks,pagination=pagination)
 
+@bp.route("/search", methods=['GET','POSt'])
+def search():
+    keyword = request.args.get("searchKeyword")
+    page = request.args.get('page', 1)
+    per_page = 5
+    offset = (page - 1) * per_page
+    stocks = StockModel.query.filter(StockModel.name.contains(keyword)).offset(offset).limit(per_page).all()
+    pagination = Pagination(page=page, per_page=per_page, total=StockModel.query.filter(StockModel.name.contains(keyword)).count(), css_framework='bootstrap4')
+    return render_template('index.html', stocks=stocks,pagination=pagination)
+
 @bp.route('/profile',methods=['GET','POST'])
 def profile():
     if request.method == 'GET':

@@ -10,8 +10,8 @@ def save_to_stock(stockId,ts_code,name,industry,list_date,area):
         host="127.0.0.1",
         port=3306,
         user="root",
-        password="164606963",
-        db="stock"
+        password="123456",
+        db="db_stock"
     )
     db=con.cursor()
     sql=f'insert into stock(stockId,ts_code,name,industry,list_date,area)values("{stockId}","{ts_code}","{name}","{industry}","{list_date}","{area}")'
