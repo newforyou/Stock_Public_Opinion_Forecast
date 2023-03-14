@@ -9,6 +9,11 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
             charset="utf-8"
     ></script>
+    <style>
+        .myButton:hover{
+            color: #a52834;
+        }
+    </style>
 </head>
 <body>
 <div class="container" id="login-box">
@@ -23,7 +28,7 @@
                 <input type="password" name="password"/>
                 <span data-placeholder="密码"></span>
             </div>
-            <a href="#">忘记密码？</a>
+            <p></p>
             <button>登录</button>
         </form>
     </div>
@@ -32,7 +37,7 @@
             <div class="overlay-panel overlay-right">
                 <h1>没有账号?</h1>
                 <p>立即注册加入我们，和我们一起开始旅程吧</p>
-                <button><a href="{{ url_for('auth.register') }}">注册</a></button>
+                <a href="{{ url_for('auth.register') }}"><button class="myButton">注册</button></a>
             </div>
         </div>
     </div>
