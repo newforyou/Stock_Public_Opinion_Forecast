@@ -6,6 +6,7 @@ from exts import db
 from blueprints import personal
 from flask_paginate import Pagination, get_page_args
 
+
 bp = Blueprint("personal", __name__, url_prefix="/personal")
 
 @bp.route("/index",methods=['GET','POST'])
