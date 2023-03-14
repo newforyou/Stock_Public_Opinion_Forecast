@@ -171,7 +171,7 @@
                                     />
                                 </li>
                                 <li>
-                                    <h4><a href="{{ url_for('personal.detail') }}" class="gupiao">{{stock.name}}</a></h4>
+                                    <h4><a href="{{ url_for('personal.detail',stockId=stock.stockId) }}" class="gupiao">{{stock.name}}</a></h4>
                                     <span>{{stock.ts_code}}</span>
                                 </li>
                                 <li>
@@ -205,7 +205,6 @@
 
                             </ul>
                         </div>
-
 {% endfor %}
                         <div style="color: white">
                             {{ pagination.info }}

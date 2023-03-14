@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db
 from blueprints import personal
 from flask_paginate import Pagination, get_page_args
-
+import json
 
 bp = Blueprint("personal", __name__, url_prefix="/personal")
 
@@ -92,7 +92,23 @@ def subscribe():
     db.session.commit()
     return redirect(url_for('personal.index'))
 
-@bp.route('/detail')
-def detail():
-    return render_template('details.html')
+@bp.route('/detail/<stockId>',methods=['GET'])
+def detail(stockId):
+
+    stock=StockModel.query.filter(StockModel.stockId==stockId).first()
+    strpre=stock.predict
+    strreal=stock.real
+    listpre=list(map(float,strpre.split(',')))
+    listreal = list(map(float, strreal.split(',')))
+
+    dic_pre = {"listpre": listpre}
+    jsonpre = json.dumps(dic_pre)
+
+    dic_real = {"listreal": listreal}
+    jsonreal = json.dumps(dic_real)
+
+    json_pre=jsonify(jsonpre)
+    json_real=jsonify(jsonreal)
+
+    return render_template('details.html',stock=stock,json_real=listreal,json_pre=listpre)
 
