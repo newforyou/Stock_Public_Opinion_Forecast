@@ -31,19 +31,20 @@
 
 <style>
     .header-area .main-nav .nav li:hover a,
-.header-area .main-nav .nav li a.active {
+    .header-area .main-nav .nav li a.active {
         color: #fff !important;
     }
-    .header-area .main-nav .nav li:last-child:hover a, 
-.header-area .main-nav .nav li:last-child a.active{
+
+    .header-area .main-nav .nav li:last-child:hover a,
+    .header-area .main-nav .nav li:last-child a.active {
         background-color: #27292a !important;
     }
 
-    #index a{
+    #index a {
         color: #fff;
         padding: 8px 10px 8px 10px;
         position: relative;
-        right: 30px; 
+        right: 30px;
         border-radius: 23px;
         width: 120px;
         height: 47px;
@@ -53,25 +54,26 @@
         border: 1px solid #e75e8d;
     }
 
-    #index a:hover{
+    #index a:hover {
         background-color: #e75e8d;
     }
 
-    #person a{
+    #person a {
         border: 1px solid #e75e8d;
     }
 
-    #person:hover .active{
+    #person:hover .active {
         background-color: #e75e8d !important;
         border-radius: 23px 23px 0 0;
     }
-    #person:hover #log-out{
+
+    #person:hover #log-out {
         background-color: #e75e8d !important;
         transition: 0.3s;
         transform: scaleY(1);
     }
 
-    #log-out{
+    #log-out {
         padding: 0;
         width: 132px;
         height: 46px;
@@ -115,12 +117,12 @@
                     <!-- ***** 菜单栏开始 ***** -->
                     <ul class="nav">
                         <li style="width: 120px;" id="index">
-                            <a 
-                            href="{{ url_for('personal.index') }}">
-                            回到首页
+                            <a
+                                    href="{{ url_for('personal.index') }}">
+                                回到首页
                             </a>
                         </li>
-                        <li id="person" >
+                        <li id="person">
                             <a href="{{ url_for('personal.profile') }}" class="active"
                             >我的订阅<img src="{{ url_for('static',filename='assets/images/profile-header.jpg') }}"
                                           alt=""
@@ -191,72 +193,86 @@
 <script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
 
 <script type="text/javascript">
-    var myChart = echarts.init(document.getElementById("main"));
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    var option;
 
+    let base = +new Date(1968, 9, 3);
+    let oneDay = 24 * 3600 * 1000;
+    let date = [];
+    let data = [Math.random() * 300];
+    for (let i = 1; i < 20000; i++) {
+        var now = new Date((base += oneDay));
+        date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+        data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+    }
     option = {
-        title: {
-            text: 'Stacked Line'
-        },
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            position: function (pt) {
+                return [pt[0], '10%'];
+            }
         },
-        legend: {
-            data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
+        title: {
+            left: 'center',
+            text: 'Large Area Chart'
         },
         toolbox: {
             feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                restore: {},
                 saveAsImage: {}
             }
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: date
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            boundaryGap: [0, '100%']
         },
+        dataZoom: [
+            {
+                type: 'inside',
+                start: 0,
+                end: 10
+            },
+            {
+                start: 0,
+                end: 10
+            }
+        ],
         series: [
             {
-                name: 'Email',
+                name: 'Fake Data',
                 type: 'line',
-                stack: 'Total',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: 'Union Ads',
-                type: 'line',
-                stack: 'Total',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            },
-            {
-                name: 'Video Ads',
-                type: 'line',
-                stack: 'Total',
-                data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-                name: 'Direct',
-                type: 'line',
-                stack: 'Total',
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: 'Search Engine',
-                type: 'line',
-                stack: 'Total',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                symbol: 'none',
+                sampling: 'lttb',
+                itemStyle: {
+                    color: 'rgb(255, 70, 131)'
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(255, 158, 68)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(255, 70, 131)'
+                        }
+                    ])
+                },
+                data: data
             }
         ]
     };
 
-    myChart.setOption(option);
+    option && myChart.setOption(option);
 </script>
 </body>
 </html>
