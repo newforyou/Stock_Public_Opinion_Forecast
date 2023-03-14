@@ -67,6 +67,6 @@ class NewsModel(db.Model):
 class SubscriptionModel(db.Model):
     __tablename__ = "subscription"
     sub_userId = db.Column(db.Integer,db.ForeignKey("user.userId"), primary_key=True)
-    sub_stockId=db.Column(db.String(20),db.ForeignKey("stock.stockId"),nullable=False)
+    sub_stockId=db.Column(db.String(20),db.ForeignKey("stock.stockId"),primary_key=True)
     # 关系
     subscription=db.relationship(UserModel,backref="stocks")

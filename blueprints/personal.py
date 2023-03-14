@@ -10,12 +10,20 @@ bp = Blueprint("personal", __name__, url_prefix="/personal")
 
 @bp.route("/index",methods=['GET','POST'])
 def index():
+    span=[]
     page = int(request.args.get('page', 1))
     per_page = 5
     offset = (page - 1) * per_page
     stocks = StockModel.query.order_by(StockModel.stockId).offset(offset).limit(per_page).all()
+    subs=SubscriptionModel.query.filter_by(sub_userId=g.user.userId).all()
+
+    for stock in stocks:
+        for sub in subs:
+            if stock.stockId == sub.sub_stockId:
+                span.append(stock.stockId)
+
     pagination = Pagination(page=page, per_page=per_page, total=StockModel.query.count(), css_framework='bootstrap4')
-    return render_template("index.html",stocks=stocks,pagination=pagination)
+    return render_template("index.html",stocks=stocks,pagination=pagination,subs=subs,span=span)
 
 @bp.route("/search", methods=['GET','POSt'])
 def search():
@@ -66,6 +74,10 @@ def subscribe():
     data = request.get_json()
     ts_code = data['ts_code']
     print(ts_code)
+    stock = StockModel.query.filter(StockModel.ts_code==ts_code).first()
+    sub=SubscriptionModel(sub_userId=g.user.userId,sub_stockId=stock.stockId)
+    db.session.add(sub)
+    db.session.commit()
     return redirect(url_for('personal.index'))
 
 @bp.route('/detail')
