@@ -198,7 +198,7 @@
                                 {% if stock.stockId not in span %}
                                 <li>
                                     <div class="main-border-button border-active">
-                                        <a href="#" class="subscribe-button" data-tsc="{{ stock.ts_code }}" data-stock="{{stock.stockId}}" >未订阅</a>
+                                        <a href="{{url_for('personal.index')}}" class="subscribe-button" data-tsc="{{ stock.ts_code }}" data-stock="{{stock.stockId}}" >未订阅</a>
                                     </div>
                                 </li>
                                 {% endif %}
@@ -254,6 +254,7 @@
 <!--}-->
 <!--    </script>-->
     <script>
+
     // 获取所有订阅按钮
     const subscribeButtons = document.querySelectorAll('.subscribe-button');
 
@@ -277,6 +278,11 @@
                 if (response.ok) {
                     // 处理成功
                     alert('订阅成功！');
+                // 2秒钟后刷新页面
+                setTimeout(function() {
+                  location.reload();
+                }, 100);
+
                 } else {
                     // 处理失败
                     alert('订阅失败！您或许已经订阅此股票！');
