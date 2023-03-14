@@ -13,7 +13,7 @@
 <body>
 <div class="container" id="login-box">
     <div class="form-container sign-in-container">
-        <form method="post">
+        <form method="post" name="myForms" onsubmit="return validateForm()">
             <h1>注册</h1>
             <div class="txtb">
                 <input type="text" name="username"/>
@@ -53,5 +53,26 @@
     $(".txtb input").on("blur", function () {
         if ($(this).val() == "") $(this).removeClass("focus");
     });
+
+    function validateForm() {
+        var username = document.forms["myForms"]["username"].value;
+        var password = document.forms["myForms"]["password"].value;
+        var passsword_confirm = document.forms["myForms"]["password_confirm"].value;
+
+        if (username.length < 3 || username.length > 14) {
+            alert("用户名长度错误，为3~14位");
+            return false;
+        }
+
+        if (password.length < 6 || password.length > 20) {
+            alert("密码长度错误，为6~20位");
+            return false;
+        }
+
+        if (password != passsword_confirm) {
+            alert("两次密码输入不一致！");
+            return false;
+        }
+    }
 </script>
 </html>
