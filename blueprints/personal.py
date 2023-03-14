@@ -16,14 +16,13 @@ def index():
     offset = (page - 1) * per_page
     stocks = StockModel.query.order_by(StockModel.stockId).offset(offset).limit(per_page).all()
     subs=SubscriptionModel.query.filter_by(sub_userId=g.user.userId).all()
-
     for stock in stocks:
         for sub in subs:
             if stock.stockId == sub.sub_stockId:
                 span.append(stock.stockId)
 
     pagination = Pagination(page=page, per_page=per_page, total=StockModel.query.count(), css_framework='bootstrap4')
-    return render_template("index.html",stocks=stocks,pagination=pagination,subs=subs,span=span)
+    return render_template("index.html",stocks=stocks,pagination=pagination,span=span)
 
 @bp.route("/search", methods=['GET','POSt'])
 def search():
@@ -38,7 +37,12 @@ def search():
 @bp.route('/profile',methods=['GET','POST'])
 def profile():
     if request.method == 'GET':
-        return render_template('profile.html')
+        mylist=[]
+        subs = SubscriptionModel.query.filter_by(sub_userId=g.user.userId).all()
+        for sub in subs:
+            stock=StockModel.query.filter_by(stockId=sub.sub_stockId).all()
+            mylist.append(stock)
+        return render_template("profile.html",mylist=mylist)
     else:
         form1 = UpdatePersonalForm(request.form)
         if form1.validate():

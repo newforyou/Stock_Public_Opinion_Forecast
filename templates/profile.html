@@ -486,6 +486,7 @@
                         <div class="heading-section">
                             <h4><em>我的</em> 订阅</h4>
                         </div>
+                        {% for list in mylist %}
                         <div class="item">
                             <ul>
                                 <li>
@@ -496,20 +497,20 @@
                                     />
                                 </li>
                                 <li>
-                                    <h4>股票id</h4>
-                                    <span>Sandbox</span>
+                                    <h4>{{list[0].name}}</h4>
+                                    <span>{{list[0].ts_code}}</span>
                                 </li>
                                 <li>
-                                    <h4>交易日期</h4>
-                                    <span>24/08/2036</span>
+                                    <h4>{{list[0].industry}}</h4>
+                                    <span>所属行业</span>
                                 </li>
                                 <li>
-                                    <h4>收盘价</h4>
-                                    <span>634 H 22 Mins</span>
+                                    <h4>{{list[0].area}}</h4>
+                                    <span>所属地区</span>
                                 </li>
                                 <li>
-                                    <h4>涨跌幅</h4>
-                                    <span>Downloaded</span>
+                                    <h4>{{list[0].list_date}}</h4>
+                                    <span>上市时间</span>
                                 </li>
                                 <li>
                                     <div class="main-border-button border-active">
@@ -518,6 +519,7 @@
                                 </li>
                             </ul>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- ***** Gaming Library End ***** -->
