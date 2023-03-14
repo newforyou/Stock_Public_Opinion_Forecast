@@ -44,6 +44,8 @@ class StockModel(db.Model):
     industry=db.Column(db.String(20),nullable=False)
     list_date=db.Column(db.String(20),nullable=False)
     area=db.Column(db.String(20),nullable=False)
+    predict= db.Column(db.Text, nullable=False)
+    real = db.Column(db.Text, nullable=False)
 
 """
 新闻表，字段为：
