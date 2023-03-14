@@ -43,14 +43,15 @@ def profile():
         for sub in subs:
             stock=StockModel.query.filter_by(stockId=sub.sub_stockId).all()
             mylist.append(stock)
-        return render_template("profile.html",mylist=mylist)
+        mylen = len(mylist)
+        return render_template("profile.html",mylist=mylist,mylen=mylen)
     else:
         mylist = []
         subs = SubscriptionModel.query.filter_by(sub_userId=g.user.userId).all()
         for sub in subs:
             stock = StockModel.query.filter_by(stockId=sub.sub_stockId).all()
             mylist.append(stock)
-
+        mylen = len(mylist)
         form1 = UpdatePersonalForm(request.form)
         if form1.validate():
             g.user.nickname = form1.nickname.data
@@ -60,7 +61,7 @@ def profile():
             db.session.merge(g.user)
             db.session.commit()
             print("修改个人信息成功")
-            return render_template('profile.html',mylist=mylist)
+            return render_template('profile.html',mylist=mylist,mylen=mylen)
         else:
             form2 = UpdatePasswordForm(request.form)
             if form2.validate():
@@ -71,9 +72,9 @@ def profile():
                 return redirect("/")
             else:
                 print(form2.errors)
-                return render_template('profile.html')
+                return render_template('profile.html',mylist=mylist,mylen=mylen)
             print(form1.errors)
-            return render_template('profile.html',mylist=mylist)
+            return render_template('profile.html',mylist=mylist,mylen=mylen)
 
 @bp.route("/logout")
 def logout():
