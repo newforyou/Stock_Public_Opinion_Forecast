@@ -160,6 +160,7 @@
                         <div class="heading-section">
                         </div>
 {% for stock in stocks %}
+
                         <div class="item">
                             <ul>
                                 <li>
@@ -185,13 +186,26 @@
                                     <h4>{{stock.list_date}}</h4>
                                     <span>上市时间</span>
                                 </li>
+
+                                {% if stock.stockId in span %}
                                 <li>
                                     <div class="main-border-button border-active">
-                                        <a href="#" class="subscribe-button" data-tsc="{{ stock.ts_code }}">订阅</a>
+                                        <a href="#" class="subscribe-button" data-tsc="{{ stock.ts_code }}" data-stock="{{stock.stockId}}" >已订阅</a>
                                     </div>
                                 </li>
+                                {% endif %}
+
+                                {% if stock.stockId not in span %}
+                                <li>
+                                    <div class="main-border-button border-active">
+                                        <a href="#" class="subscribe-button" data-tsc="{{ stock.ts_code }}" data-stock="{{stock.stockId}}" >未订阅</a>
+                                    </div>
+                                </li>
+                                {% endif %}
+
                             </ul>
                         </div>
+
 {% endfor %}
                         <div style="color: white">
                             {{ pagination.info }}
@@ -226,6 +240,19 @@
     <script src="{{ url_for('static',filename="assets/js/tabs.js") }}"></script>
     <script src="{{ url_for('static',filename="assets/js/popup.js") }}"></script>
     <script src="{{ url_for('static',filename="assets/js/custom.js") }}"></script>
+<!--    <script>-->
+<!--    const link = document.getElementsByClassName('subscribe-button')[0];-->
+<!--    const stockid = link.getAttribute('data-stock');-->
+<!--    const subid = link.getAttribute('data-sub');-->
+
+<!--     function insertLink() {-->
+<!--  if(stockid==subid){link.innerText = '已订阅';}-->
+<!--    else{ link.innerText = '未订阅';}-->
+
+<!--  insertLink();-->
+<!--  document.body.appendChild(link);-->
+<!--}-->
+<!--    </script>-->
     <script>
     // 获取所有订阅按钮
     const subscribeButtons = document.querySelectorAll('.subscribe-button');
@@ -252,7 +279,7 @@
                     alert('订阅成功！');
                 } else {
                     // 处理失败
-                    alert('订阅失败！');
+                    alert('订阅失败！您或许已经订阅此股票！');
                 }
             })
             .catch(error => {
