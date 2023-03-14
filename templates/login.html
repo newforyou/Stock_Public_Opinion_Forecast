@@ -13,7 +13,7 @@
 <body>
 <div class="container" id="login-box">
     <div class="form-container sign-in-container">
-        <form method="post">
+        <form method="post" name="myForms" onsubmit="return validateForm()">
             <h1>登录</h1>
             <div class="txtb">
                 <input type="email" name="email"/>
@@ -46,5 +46,13 @@
     $(".txtb input").on("blur", function () {
         if ($(this).val() == "") $(this).removeClass("focus");
     });
+    function validateForm() {
+        var x = document.forms["myForms"]["password"].value;
+        if (x.length < 6 || x.length > 20) {
+            alert("密码长度错误，为6~20位");
+            document.getElementById("myForms").reset();
+            return false;
+        }
+    }
 </script>
 </html>
