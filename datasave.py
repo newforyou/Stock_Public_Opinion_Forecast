@@ -5,16 +5,18 @@
 import json
 import pymysql
 
-def save_to_stock(stockId,ts_code,name,industry,list_date,area):
+
+
+def save_to_stock(stockId,ts_code,name,industry,list_date,area,predict,real):
     con=pymysql.connect(
         host="127.0.0.1",
         port=3306,
         user="root",
-        password="123456",
-        db="db_stock"
+        password="164606963",
+        db="stock"
     )
     db=con.cursor()
-    sql=f'insert into stock(stockId,ts_code,name,industry,list_date,area)values("{stockId}","{ts_code}","{name}","{industry}","{list_date}","{area}")'
+    sql=f'insert into stock(`stockId`,`ts_code`,`name`,`industry`,`list_date`,`area`,`predict`,`real`)values("{stockId}","{ts_code}","{name}","{industry}","{list_date}","{area}","{predict}","{real}")'
     db.execute(sql)
     con.commit()
     db.close()
@@ -62,6 +64,24 @@ for i in range(0,20):
     industry=list_industry[i]
     list_date=list_list_date[i]
     area=list_area[i]
-    save_to_stock(stockId=stockId, ts_code=ts_code, name=name, industry=industry, list_date=list_date,area=area)
+    with open("./stock_predict/predict_Data/" +ts_code+ "_predict.txt", 'r', encoding='utf8') as fp:
+        myline = []
+        lines = fp.readlines()
+        for line in lines:
+            myline.append(line[:4])
+        predict=','.join(myline)
+        print(predict)
+        print(type(predict))
+
+    with open("./stock_predict/real_Data/" +ts_code+ "_real.txt", 'r', encoding='utf8') as fm:
+        mylinereal = []
+        linesreal = fm.readlines()
+        for linere in linesreal:
+            mylinereal.append(linere[:4])
+        real=','.join(mylinereal)
+        print(real)
+        print(type(real))
+
+    save_to_stock(stockId=stockId, ts_code=ts_code, name=name, industry=industry, list_date=list_date,area=area,predict=predict,real=real)
 
 
