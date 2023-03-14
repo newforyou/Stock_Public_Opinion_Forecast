@@ -94,6 +94,13 @@ def subscribe():
 
 @bp.route('/detail/<stockId>',methods=['GET'])
 def detail(stockId):
+    span=[]
+    myexit=False
+    subs = SubscriptionModel.query.filter_by(sub_userId=g.user.userId).all()
+    for sub in subs:
+        span.append(sub.sub_stockId)
+    if stockId in span:
+        myexit=True
 
     stock=StockModel.query.filter(StockModel.stockId==stockId).first()
     strpre=stock.predict
@@ -110,5 +117,5 @@ def detail(stockId):
     json_pre=jsonify(jsonpre)
     json_real=jsonify(jsonreal)
 
-    return render_template('details.html',stock=stock,json_real=listreal,json_pre=listpre)
+    return render_template('details.html',stock=stock,json_real=listreal,json_pre=listpre,myexit=myexit)
 
