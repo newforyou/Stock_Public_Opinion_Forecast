@@ -46,7 +46,6 @@
     $(".txtb input").on("blur", function () {
         if ($(this).val() == "") $(this).removeClass("focus");
     });
-
     function validateForm() {
         var x = document.forms["myForms"]["password"].value;
         if (x.length < 6 || x.length > 20) {
