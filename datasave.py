@@ -73,6 +73,7 @@ for i in range(0,20):
         print(predict)
         print(type(predict))
 
+
     with open("./stock_predict/real_Data/" +ts_code+ "_real.txt", 'r', encoding='utf8') as fm:
         mylinereal = []
         linesreal = fm.readlines()

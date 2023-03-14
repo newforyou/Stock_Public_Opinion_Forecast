@@ -35,6 +35,7 @@ class UserModel(db.Model):
 涨跌幅
 成交量
 成交额
+
 """
 class StockModel(db.Model):
     __tablename__ = "stock"
