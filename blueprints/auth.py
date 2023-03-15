@@ -24,6 +24,7 @@ def register():
             return redirect(url_for("auth.login"))
         else:
             print(form.errors)
+            flash("注册失败！请检查信息是否正确！")
             return redirect(url_for("auth.register"))
 
 
@@ -38,13 +39,15 @@ def login():
             password = form.password.data
             user = UserModel.query.filter_by(userMail=email).first()
             if not user:
-                print("邮箱再数据库中不存在！")
+                print("邮箱不存在！")
+                flash("邮箱不存在！")
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
                 session['userId'] = user.userId
                 return redirect(url_for("personal.index"))
             else:
                 print("密码错误！")
+                flash("密码错误！")
                 return redirect(url_for("auth.login"))
         else:
             print(form.errors)
