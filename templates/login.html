@@ -10,8 +10,17 @@
             charset="utf-8"
     ></script>
     <style>
-        .myButton:hover{
+        .myButton:hover {
             color: #a52834;
+        }
+
+        .myAlert {
+            display: inline-block;
+            color: white;
+            border-radius: 20px;
+            border: 1px solid #B95AAE;
+            width: 50%;
+            margin: 10px auto;
         }
     </style>
 </head>
@@ -28,7 +37,13 @@
                 <input type="password" name="password"/>
                 <span data-placeholder="密码"></span>
             </div>
-            <p></p>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="myAlert">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <button>登录</button>
         </form>
     </div>
@@ -37,7 +52,9 @@
             <div class="overlay-panel overlay-right">
                 <h1>没有账号?</h1>
                 <p>立即注册加入我们，和我们一起开始旅程吧</p>
-                <a href="{{ url_for('auth.register') }}"><button class="myButton">注册</button></a>
+                <a href="{{ url_for('auth.register') }}">
+                    <button class="myButton">注册</button>
+                </a>
             </div>
         </div>
     </div>
@@ -51,6 +68,7 @@
     $(".txtb input").on("blur", function () {
         if ($(this).val() == "") $(this).removeClass("focus");
     });
+
     function validateForm() {
         var x = document.forms["myForms"]["password"].value;
         if (x.length < 6 || x.length > 20) {

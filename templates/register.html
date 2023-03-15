@@ -13,6 +13,15 @@
         .myButton:hover {
             color: #a52834;
         }
+
+        .myAlert {
+            display: inline-block;
+            color: white;
+            border-radius: 20px;
+            border: 1px solid #B95AAE;
+            width: 50%;
+            margin: 10px auto;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +45,13 @@
                 <input type="password" name="password_confirm"/>
                 <span data-placeholder="确认密码"></span>
             </div>
-            <p></p>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="myAlert">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <button type="submit">注册</button>
         </form>
     </div>
@@ -45,7 +60,9 @@
             <div class="overlay-panel overlay-right">
                 <h1>已有账号？</h1>
                 <p>请使用您的账号进行登录</p>
-                <a href="{{ url_for('auth.login') }}"><button class="myButton">登陆</button></a>
+                <a href="{{ url_for('auth.login') }}">
+                    <button class="myButton">登陆</button>
+                </a>
             </div>
         </div>
     </div>
