@@ -328,9 +328,9 @@
             axisLine: {
                 show: true,
                 lineStyle: {
-                    color: '#fff',
+                    {#'#fff' '#F29AAD'#}
+                    color: '#92ceeb',
                     width: 2,
-
                 }
             }
         },
@@ -341,11 +341,18 @@
             axisLine: {
                 show: true,
                 lineStyle: {
-                    color: '#fff',
+                    color: '#92ceeb',
                     width: 2,
+                }
+            },
+            splitLine:{
+                lineStyle:{
+                    type:'dashed',
+                    color:'rgba(146,206,235,0.58)',
                 }
             }
         },
+
         dataZoom: [
             {
                 type: 'inside',
