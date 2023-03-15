@@ -86,6 +86,16 @@
         background-color: #1f2122;
     }
 
+    .gaming-library{
+        background-color: #27292a;
+        margin-bottom: 40px;
+    }
+
+    .item{
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
 </style>
 
 <body>
@@ -139,27 +149,27 @@
                         <div class="col-lg-12">
                             <div class="item">
                                 <ul>
-                                    <li>
+                                    <li style="width:10%;">
                                         <img
                                                 src="{{ url_for('static',filename="assets/images/stockimg.png") }}"
                                                 alt=""
                                                 class="templatemo-item"
                                         />
                                     </li>
-                                    <li>
+                                    <li style="width: 23%;">
                                         <h4><a href="{{ url_for('personal.detail',stockId=stock.stockId) }}"
                                                class="gupiao">{{ stock.name }}</a></h4>
                                         <span>{{ stock.ts_code }}</span>
                                     </li>
-                                    <li>
+                                    <li style="width: 23%;">
                                         <h4>{{ stock.industry }}</h4>
                                         <span>所属行业</span>
                                     </li>
-                                    <li>
+                                    <li style="width: 23%;">
                                         <h4>{{ stock.area }}</h4>
                                         <span>所属地区</span>
                                     </li>
-                                    <li>
+                                    <li style="width: 8%;">
                                         <h4>{{ stock.list_date }}</h4>
                                         <span>上市时间</span>
                                     </li>
@@ -300,10 +310,11 @@
             text: '{{ stock.name }}'
         },
         toolbox: {
+            x:1000,
             feature: {
-                <!--        dataZoom: {-->
-                <!--            yAxisIndex: 'none'-->
-                <!--        },-->
+                // dataZoom: {
+                //     yAxisIndex: 'none'
+                // },
                 restore: {},
                 saveAsImage: {}
             }
