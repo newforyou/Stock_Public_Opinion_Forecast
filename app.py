@@ -1,6 +1,6 @@
 import warnings
 
-from flask import Flask, render_template, session, g,redirect,url_for
+from flask import Flask, session, g, redirect, url_for
 from flask_migrate import Migrate
 
 import config
